@@ -1,0 +1,89 @@
+\begin{table*}
+\caption{  CS projects
+ that satisfy
+the sanity checks of
+Table~\ref{tbl:sanity}.
+This list has been auditted by
+a domain expert from  CS
+(Dr Robert Sinkovits, San Diego
+SuperComputer Center  (https://www.sdsc.edu/~sinkovit/)) who commented that   many of these projects account for the majority of the supercomputer usage in computational
+science. While some of these  focus on  computational chemistry,  they   also   include  numerous widely-used support tools (e.g
+elasticsearch) or simulation tools that are cross-disciplinary (e.g. the classical simulation tools
+used  by molecular biologists).  Also, there are also tools here used in material science (e.g. LAMMPS).}
+\label{tbl:samples}
+{
+ \small
+\hspace{0.5cm}\begin{tabular}{r|lcccccrrc}
+\renewcommand{\baselinestretch}{0.7}
+&   &   &   &   &  &  &  & Analyzed \\
+% 
+ & Language & \# Developers & Duration(Years) & \# Commits & \# Stars & \# Issues & \# Releases  & in Fig.\ref{fig:belief1}\&\ref{fig:SE_activities}\\  
+ %& in Figure~2
+\hline
+\rowcolor{blue!10}  cctools & C	 & 43	& 5.5 & 8881	& 72 & 666 & 159  &  \checkmark \\
+keplerproject & C & 22	& 5.25 & 329 & 26 & 66	& 18 &   \\
+BLIS & C & 20 & 4.8 & 1242 & 413 & 142 & 25 &   \\\hline 
+\rowcolor{blue!10}PCMSolver & C++ & 8 & 4 & 1844 & 13 & 88 & 16 & \checkmark \\ 
+\rowcolor{blue!10}AMBER & C++ & 12 & 4 & 8382 & 32 & 249 & 3 & \checkmark\\
+\rowcolor{blue!10}HooMD-blue & C++ & 36 & 2.5 & 9450 & 54 & 330 & 25 & \checkmark \\
+\rowcolor{blue!10} dealii & C++ & 120 & 18 & 41514 & 382 & 1604 & 26 & \checkmark  \\
+\rowcolor{blue!10}  Psi4 & C++ & 79 & 5.5 & 12178 & 247 & 504 &	7 & \checkmark  \\
+\rowcolor{blue!10}LAMMPS & C++ & 74 & 5.13 & 15814 & 383 & 294 & 91 & \checkmark \\ 
+\rowcolor{blue!10}LIBMESH & C++  & 55 & 6 & 17133 & 247 & 449 & 59 & \checkmark \\ 
+\rowcolor{blue!10} TRILINOS & C++ & 179 & 3 &	79520 & 310  &	2063 &	141 & \checkmark  \\
+changa & C++ & 19	& 3.5 & 1458 & 13 & 16 & 8 &   \\
+cyclus & C++ & 20	& 6.5 & 6579 & 36 & 625	& 47 &   \\
+GooFit & C++ &	12	& 5.5  & 1508	& 57 & 50	& 12 &   \\
+irods & C++	& 36 & 5 & 6267 & 236 & 3820 & 34 &   \\
+MADNESS & C++ & 31 & 4.5 & 5193 & 71 & 184 & 3 &   \\
+metpy & C++	& 34	& 7.75 & 2199 & 332 & 481 & 20 &   \\
+OpenMm & C++ & 38 & 7 & 5838 & 324 & 959 & 22 &   \\
+OpenMX & C++ & 11 & 5 & 6993 & 26 & 79 & 62 &   \\
+PLUMED & C++ & 23 & 5.5 & 8075 & 92 & 282 & 35 &   \\
+SCIRun & C++ & 18	& 6.5 & 8887 & 45 & 1487 &79 &   \\\hline
+\rowcolor{blue!10}  quantum\_package & Fortran & 11 & 4.5 & 2721 & 18 & 92 & 5 & \checkmark  \\
+\rowcolor{blue!10}ABINIT  & Fortran & 23 & 2.3 & 6793 & 53 & 13 & 96 & \checkmark  \\ 
+\rowcolor{blue!10}  OpenMPI & C, Fortran & 147 & 4 &	28680 & 627 & 1424  & 99 & \checkmark  \\
+OpenMolcas & Fortran & 29 & 1 & 565 & 29 & 52 & 2 &   \\ 
+MPQC & C++, Fortran & 12 & 5 & 6362 & 28 & 44 & 57 &   \\
+NWChem & Fortran & 29 & 1 & 26013 & 70 & 33 & 5 &   \\\hline
+\rowcolor{blue!10}Xenon & Java  & 11 & 9 & 2315 & 15 & 378 & 21 & \checkmark \\
+\rowcolor{blue!10}elasticsearch & Java & 1103 & 8.5 & 42349 & 37757 & 16918 & 223 & \checkmark   \\
+learnsphere & Java &  9 & 2.5 & 646	& 11 & 34 & 1 &   \\
+trellis & Java & 7 & 2 & 892 & 26 & 171 & 10 &   \\
+orca & Java	& 11 & 3.5 & 1103 & 1 & 143	& 19 &   \\\hline
+ndslabs & Javascript	&	7 & 3.5 & 	1308 &	6 &	65 &	18 \\
+clowder & JavaScript	 & 28  &	2 &	6733 &	22 &	12 &	28 & \\\hline
+tripal & PLpgSQL	 & 23 &	4.5 &	5515 & 34 &	638 &	23 & \\
+hubzero\_cms & PHP	 & 33 &	7.5 &	21440 & 34 &	48 &	122 & \\\hline
+\rowcolor{blue!10} abaco & Python 	& 8	& 3.5 & 1112 & 13 & 29 & 7 & \checkmark   \\
+\rowcolor{blue!10} MDAnalysis & Python & 76 & 3.5 & 5120 & 233 & 1087 & 46 & \checkmark \\
+\rowcolor{blue!10}  radical-pilot & Python & 17	&  5 & 56900 & 26 & 1269 & 137 & \checkmark   \\
+\rowcolor{blue!10} RMG-Py & Python  & 43 & 1 & 7548 & 112 & 678 & 17 & \checkmark \\
+\rowcolor{blue!10}  Use Galaxy & Python	& 188 & 3.5 & 36005 & 507 & 2269 & 51 & \checkmark  \\
+\rowcolor{blue!10} yt & Python & 93 & 1.5 & 23923 & 138 & 1216 & 37 & \checkmark   \\
+forcebalance & Python &	10 & 5 & 1562 & 48 & 47 &	6 &   \\
+foyer & Python & 10 & 3.5 &	343 & 19 &	66 & 8 &   \\
+TauDEM & Python	& 11 & 5.5 & 298 & 102 & 132 & 10 &   \\
+signac-flow & Python &	8 & 2 & 1000 & 5 & 28	&3 &   \\
+openmmtools & Python &	10 & 4 &	1156 & 40  & 154	& 31 &   \\
+parsl & Python & 11	& 2 & 1268 & 63 & 258	& 15 &   \\
+openforcefield & Python &	8	& 1 &1360 & 37	& 70	& 5 &   \\
+yank & Python &	8 & 5  &	2728 & 41 & 557 & 34 &   \\
+mdtraj & Python	& 45	& 6 & 2971 & 189 & 682	& 21 &   \\
+htmd & Python  & 12 &	4.5 & 3562  &	117 & 598 &	162 \\
+Luigi & Python & 35 & 6 & 3628 & 10348 & 628	& 37 &   \\
+pyscf & Python	& 36 & 4.5 & 4666 & 217 & 101	& 41 &   \\
+signac & Python	& 8	& 2 & 5000 & 8	& 89 &	5 &   \\
+mast & Python & 22	& 5.5 & 5050 & 8 & 471	& 69 &   \\
+APBS & Python & 19 & 5 & 6642 & 67 & 501 & 8 &   \\
+hydroshare & Python	& 30 & 4 &	9387 & 63 & 1708	& 55 &   \\
+pymatgen & Python & 107	& 7 & 14989	& 322 & 359	& 228 &   \\
+
+
+
+
+
+\end{tabular} }
+\label{tbl:all_projects}
+\end{table*}
