@@ -188,14 +188,13 @@ Table \ref{tab:characteristics}. Yet, issues with much of the analysis of Table 
 
 
 Given the relevance of CS field, prominence of the beliefs
-from Table \ref{tab:characteristics}, and the limitations of prior studies, it is important to assert the prevalence of these beliefs with empirical evidence. A recent trend is that CS researchers store their code on opens source repositories (such as Github). This study mines the code and comments of dozens of those repositories, to assess the current relevance of the Table \ref{tab:characteristics} beliefs. 
- For each such belief:
-\bi
-\item We constructed observable/circumstantial signals and rulers to assess how signals should be if the belief was true.   
-\item We endorse/doubt that belief if those signals are present/absent within the Github CS repositories.
-\ei
+from Table \ref{tab:characteristics}, and the limitations of prior studies, it is important to assert the prevalence of these beliefs with empirical evidence. A recent trend is that CS researchers store their code on opens source repositories (such as Github). This study mines the code and comments of dozens of those repositories, to assess the current relevance of the Table \ref{tab:characteristics}'s beliefs. This approach built on \textit{indicators} -  measure or metric that evaluates goal with respect to some objectives. To illustrate, suppose you are assessing how delicious a dish is without tasting it. The fragrance's strength, the color, the arrangement, and the distribution of meat and veggies from the dish can serve as \textit{indicators} for your estimation of the dish's deliciousness. In the same vein, for each belief in this study:
+\be
+\item We constructed observable indicators and conditions of how indicators should be if the belief was true.   
+\item We endorse/doubt that belief if those conditions are met/unmet within the Github CS repositories.
+\ee
 
-Each of these beliefs is essential to the future of interdisciplinary of both CS and SE fields. Our study goal is not to thoroughly cover and investigate all the corner cases existing in each belief which would not serve them justice. However, our goal is to report on if these beliefs are still hold in respect to the empirical evidences from the accessed data. Therefore, an important part of this analysis is that all of our reasonings are repeatable/ refutable/ improvable e.g. scales to multiple projects and can be tested by anyone with access to Github.
+Each of these beliefs is essential to the future of interdisciplinary of both CS and SE fields. Our study goal is not to thoroughly cover and investigate all the corner cases existing in each belief which would not serve them justice. However, our goal is to report on if these beliefs are still hold in respect to the empirical indicators from the accessed data. Therefore, an important part of this analysis is that all of our reasonings are repeatable/ refutable/ improvable e.g. scales to multiple projects and can be tested by anyone with access to Github.
 Based on the analysis of 59 CS projects, we found that:
 \bi
 \item Three out of 13 beliefs cannot be assessed using Github data: 1c, 2a, \& 2d. 
@@ -373,16 +372,16 @@ uses the following terms:
     \item
     {\em Heroes:} This term is used widely in the literature~\cite{agrawal2018we, goeminne2011evidence, torres2011analysis, robles2009evolution} to denote
 those programmers within a project that do most of the work\footnote{ See~\cite{claburn2020_heroes}
-  for a critical review of this particular term. While  we agree with those criticisms, the term is highly prevalent in the literature. Hence, reluctantly, we use the 
+for a critical review of this particular term. While  we agree with those criticisms, the term is highly prevalent in the literature. Hence, reluctantly, we use the 
   term ``hero''.}. The usual definition of ``heroes'' are the 20\% of developers who write more than X\% of the code.
   The usual threshold for ``X'' is $X\ge 80\%$~\cite{robles2009evolution} but recently
-  Majumder et al.~\cite{majumder19_heroes} found that such heroes are so common in open source projects that we
+ Majumder et al.~\cite{majumder19_heroes} found that such heroes are so common in open source projects that we
  will use their threshold of $X\ge 95\%$. 
 \ei
 
 \subsection{Statistical Testing}
 
-We compared distribution of Github metrics and reusage patterns in SE \& CS community through statistical significance test and an effect size test by Scott-Knott procedure \cite{mittas2013ranking, ghotra15}. Significance test detects if two populations differ merely by random noises \cite{ghotra15}. Effect sizes checks whether two populations differ by more than just a trivial amount, where $\mathit{A12}$ effect size test was used \cite{arcuri2011practical}. Our stats test are statistically significant with 95\% confidence and not a ``small'' effect ($\mathit{A12} \ge 0.6$).
+We compared distribution of Github metrics and reusage patterns in SE \& CS community through statistical significance test and an effect size test by Scott-Knott procedure \cite{mittas2013ranking, ghotra15}. Significance test detects if two populations differ merely by random noises \cite{ghotra15}. Effect sizes checks whether two populations differ by more than just a trivial amount, where $\mathit{A12}$ effect size test was used \cite{arcuri2011practical}. Our tests are statistically significant with 95\% confidence and not a ``small'' effect ($\mathit{A12} \ge 0.6$).
 
 % \subsection{Software Development}
 
@@ -403,27 +402,17 @@ The reasoning of this
 paper makes
 modeling assumptions in order to bridge between the terminology of the belief
  and the terms in the Github data.   For example, consider the belief 1.b ``Verification and validation in software development for CS is difficult''.   
- None of our data is conveniently labelled with the tag ``verification and validation'' (V\&V).  Instead, based on our reading of the commits, we could assign labels showing whether or not developers were reporting the results of creating/running tests. Hence, to explore that belief we had to make the following modeling assumptions to bridge between the terminology of the belief and the terms in the Github data.
- \bi
- \item V\&V is associated with testing;
- \item The amount of testing is an indicator for  V\&V activity.
- \ei
+ None of our data is conveniently labelled with the tag ``verification and validation'' (V\&V).  Instead, based on our reading of the commits, we could assign labels showing whether or not developers were reporting the results of creating/running tests. Hence, to explore that belief we had to make the following modeling assumptions to bridge between the terminology of the belief and the terms in the Github data: (1) V\&V is associated with testing; and (2) the amount of testing is an indicator for  V\&V activity.
+
+
  Formally, this means that our conclusions are based  on what
  Schouten et al.describe as
   {\em indicators}~\cite{schouten2010indicators} rather than direct measures. Indicator-based reasoning
-  if often required in   large scale data collection, especially
-  when the   goals being pursued
-  are not   directly
-  measured. 
-  For example, in the software engineering literature, 
-  Mylopoulos et al.~\cite{barone2011composite} relied on such indicators for their work on business intelligence.
-  More generally, in the business 
-  management literature, there is much agreement that some strategy is required
-  to bridge between the goals of the investigation and what is observable in the data. 
-  For example, in the original paper on balanced score cards (which, at the time of this
-  writing,  has over 9800 citations in Google Scholar~\cite{kaplan1996using}),
-  Kaplan and Norton offer a four-layer ``perspectives diagram'' that implements the bridge from high-level business goals down
-  to observable entities.
+  if often required as a method to take steps closer to intangible/ abstract/ expensive vision. In Statistics, Schouten relied on indicators to support large survey data collection monitoring \cite{schouten2010indicators}. In SE, Lamsweerde used indicators to evaluate the degree of fulfillment of goals \cite{vanLamsweerde2009_requirement}.
+  In business 
+  management, Kaplan and Norton \cite{kaplan1996using} offered a four-layer ``perspectives diagram'' named balanced score card that implements the bridge from high-level and intangible business goals down
+  to observable entities, i.e. indicators, in order to link long-term goals and short term progress of an organization (at the time of this
+  writing, has over 9800 citations in Google Scholar).
   
   Due to the approximate
   nature of these indicators, it can
@@ -439,7 +428,7 @@ modeling assumptions in order to bridge between the terminology of the belief
   We eschew the term ``reject'',
   preferring instead to say
   ``endorse'' or ``doubt''.
-  \item This is one of our construct validity but we attempted to reduce this threat by constructing at least two signals and measure them for each belief except for 1.a and 1.b.
+  \item The approximate nature is one of our construct validity but we attempted to reduce this threat by constructing at least two signals and measure them for each belief except for 1.a and 1.b.
 \ei
 
 \subsection{Sampling Bias}
@@ -682,7 +671,7 @@ We \textbf{endorse} the belief that within CS, software development's verificati
 \item CS V\&V have to cover both scientific and engineering concerns while SE V\&V at some points would mature to only focusing on verification. 
 \ei 
 
-Specifically, by looking at the \textit{Testing} and \textit{Bug-fixing} attributes from Figure \ref{fig:SE_activities}, the bug-fixing activities from SE software development are almost three times as in CS which is the direct result from testing 2.5 times less than CS. Essentially, the less developers test, the more bugs developers have to fix. After shipping the software, SE developers are more reluctant to test the software while for CS developers, scientific software research and development might be an endless journey.
+Specifically, by looking at the \textit{Testing} and \textit{Bug-fixing} attributes from Figure \ref{fig:SE_activities}, the bug-fixing activities from SE software development are almost three times as in CS which is the direct result from testing 2.5 times less than CS. Essentially, the \textit{less} developers test, the \textit{more} bugs developers have to fix. After shipping the software, SE developers are more reluctant to test the software while for CS developers, scientific software research and development might be an endless journey.
 
 Hence, it is not surprising CS software requires more verification and validation effort than SE software because of the research nature over production nature and the problem it addresses are more dynamic and  ``tests'' need to be a higher level and refer back to some core physical properties as defined
 by scientific theory.  
@@ -699,7 +688,7 @@ by scientific theory.
 % by scientific theory.  
 
 
-% \noindent \textit{\underline{Thread of Validity:}} CS developers are good at contributing relevant code to the system that less likely to introduce the bugs which make them more confident to spend less time on maintenance. 
+% \noindent \textit{\underline{Threats of Validity:}} CS developers are good at contributing relevant code to the system that less likely to introduce the bugs which make them more confident to spend less time on maintenance. 
  
 
  
@@ -884,6 +873,7 @@ Furthermore, we summarized the the Github statistics of 1,000+ projects within t
 
 \noindent \textit{\underline{Discussion:}} The view of training in SE for us is not solely about data structures and algorithm understandings (i.e. may not be even applicable when entering SE career in Sillicon Valley). It is about the real-world experience and intuitions that scientists can also pick up from working with colleagues (e.g. 1.a belief: requirements are not known upfront, agile philosophy). Similar to \S4.1's \textit{Discussion}, CS developers are well aware that SE skills are appealing to high-profile companies in the industry.  Moreover, we also offer additional evidence to doubt this belief in \S6.4 that CS novices and outsiders understand the source code than SE ones to contribute significantly less defects.  
 
+\noindent \textit{\underline{Threats of Validity:}} 
 
 \subsection{Terminology}~\\
 \noindent \textit{\underline{Belief:}} Both SE and CS fields used different terminologies (or even languages) to describe the the things they do, sometimes, the same activity \cite{faulk09_secs, easterbrook_cs, boyle09_lessons}.
@@ -903,7 +893,7 @@ in the majority case 7 out of 9 projects for both G-score and $P_{opt}$20.
 
 
 \begin{RQ}
-\textit{\underline{Conclusion:}} With this empirical study's straightforward result, we confidently \textbf{endorse} that the computational science community utilize a different language when describing/documenting their work. 
+\textit{\underline{Conclusion:}} With this empirical study's straightforward result, we confidently \textbf{endorse} that the CS community utilizes a different language when describing/documenting their work. 
 \end{RQ} 
 
 \noindent \textit{\underline{Discussion:}}  Tu et al. \cite{tu2019better} indicated a few reasons how their work demonstrates that a different model to learn the language of CS during software development is important. In the case of labeling defective commits, they observed that over half of the commits message were (a) very short (almost three times shorter than CS ones on median) and (b) took the form of
@@ -976,19 +966,19 @@ Further, this result also raises attention for the current bad research fashion 
 
 \noindent \textit{\underline{Result:}} According to the Figure \ref{fig:comparison}, the number of \textit{Open \& Closed Issues} are higher in Computational Science projects than in SE projects. The similar distributions of \textit{Stars}, \textit{Forks}, and \textit{Watchers} between CS and SE projects indicated similar values are placed by the audiences for both types of software. We took an additional step by using Scott-Knott testing (from \S2.5)  to rank the two CS and SE population for each of those three metrics if they are statistically different or not. As suspected, CS projects are ranked statistically similar to SE projects for those three metrics. 
 
-Meanwhile, the distribution of \textit{Duration} demonstrated that even when the scientists believed their software is long-lived, the actual Duration of their software development is observed, on average, to be significantly shorter, almost 75\%, of the \textit{Duration} of the SE software. Similar to \textit{4.3.1}, from our sample, CS projects' lives are shorter with a greater commit density than SE projects. It indicates that CS software are important to the scientific developers that they spend more efforts to actually understand their code and offer more relevant contributions to the project's development.   
+Meanwhile, the distribution of \textit{Duration} demonstrated that even when the scientists believed their software is long-lived, the actual Duration of their software development is observed, on average, to be significantly shorter, almost 75\%, of the \textit{Duration} of the SE software. Similar to \textit{4.3.1}, from our sample, CS projects' lives are shorter with a greater commit density than SE projects. It indicates that CS software are important to the scientific developers that they spend more efforts to actually understand their code and offer more relevant contributions to xthe project's development.   
 
 
 \begin{RQ}
-\textit{\underline{Conclusion:}} Those statistics are some clear signals leading us to \textbf{doubt} that CS softwares have no value but long-lived.  
+\textit{\underline{Conclusion:}} These statistics are clear signals helping us to \textbf{doubt} that CS software have no value but long-lived.  
 \end{RQ}
 
-\noindent \textit{\underline{Discussion:}} Scientific software is developed by mostly Ph.D students and postdocs that have high personnel turnover rates \cite{johan18_secs}. Moreover, due to grant-based funding schemes and research natures, long-term vision is discouraged with ``quick and dirty'' solutions are more likely to be favored \cite{boyle09_lessons} which leads to short-lived softwares. 
+\noindent \textit{\underline{Discussion:}} Scientific software is developed by mostly Ph.D students and postdocs that have high personnel turnover rates \cite{johan18_secs}. Moreover, due to grant-based funding schemes and research natures, long-term vision is discouraged with ``quick and dirty'' solutions are more likely to be favored \cite{boyle09_lessons} which leads to short-lived software. 
 
 The result for value aspect may surprise some folks. However, a trend in software-based research for both scientific developers or professional end user is following the development of the projects and ultimately use such project to curate necessary data, baseline results, and integrated framework that are relevant to their studies. Hence, the signal is clear by observing the similar distribution of \textit{Stars}, \textit{Forks}, and \textit{Watchers} (i.e. for following) and the greater distribution of \textit{Open \& Closed Issues} (i.e. for using) from CS's metrics to SE's metrics. 
 
 
-\noindent \textit{\underline{Thread of Validity:}} Software live-span here is only applicable to Github as a warehouse that store these CS projects. Older existing systems and commercial projects that are not housed on Github may actually been around longer (e.g. Gitlab or/and local facilities). The value aspect here is only applying to Github popularity but not in term of how useful they are to people in real life. Essentially, scale versus impact debate that requires a more thorough and possibly longitudinal study to investigate the importance of one project to another, to the community, and to the civilization/world (e.g. combat global warming). 
+\noindent \textit{\underline{Threats of Validity:}} Software live-span here is only applicable to Github as a warehouse that store these CS projects. Older existing systems and commercial projects that are not housed on Github may actually been around longer (e.g. Gitlab or/and local facilities). The value aspect here is only applying to Github popularity but not in term of how useful they are to people in real life. Essentially, scale versus impact debate that requires a more thorough and possibly longitudinal study to investigate the importance of one project to another, to the community, and to the civilization/world (e.g. combat global warming). 
 
 \subsection{Code Understanding} ~\\
 \noindent \textit{\underline{Belief:}} Creating a shared understanding of ``code'' is difficult \cite{segal07_problem, carver06_hpc, Shull05_parallel, sanders08_risk}. 
@@ -1046,7 +1036,7 @@ The result for value aspect may surprise some folks. However, a trend in softwar
 
 It is a call for action that the CS community should organize and encourage more novices and outsiders to contribute to the scientific software development. 
 
-% \noindent \textit{\underline{Thread of Validity:}} 
+% \noindent \textit{\underline{Threats of Validity:}} 
 
 
 
@@ -1113,7 +1103,7 @@ SE & 70\% & 27\%   \rule{0pt}{2.5ex} \\  [1.5pt]
 
 Meanwhile, SE projects cover solutions for diverse range of fields instead of only science (e.g. finance, health, transportation, etc). This leads to coverage of many different frameworks and specialized software libraries with number of magnitudes higher than CS projects. It is less likely for SE to share any common interests or/and software to recycle. 
 
-\noindent \textit{\underline{Threads of Validity:}} This analysis is limited to only the higher level of import activities and we did take a precaution step by making sure that the external libraries are being called later in the same file. However, we acknowledge that more in-depth analysis of the whole source code can be investigated with different types of clone (exact, renamed, near miss, and semantic) and different approaches (text-based, token-based, tree-based, metric-based, semantic and hybrid). The comparison of such approaches can lead to $O(n^{(m-1)})$ complexity with $n$ as the current section of codes within the project and $m$ is the number of the projects to compare to. This is an interesting and important direction for future work that is beyond the scope of this paper.  
+\noindent \textit{\underline{Threats of Validity:}} This analysis is limited to only the higher level of import activities and we did take a precaution step by making sure that the external libraries are being called later in the same file. However, we acknowledge that more in-depth analysis of the whole source code can be investigated with different types of clone (exact, renamed, near miss, and semantic) and different approaches (text-based, token-based, tree-based, metric-based, semantic and hybrid). The comparison of such approaches can lead to $O(n^{(m-1)})$ complexity with $n$ as the current section of codes within the project and $m$ is the number of the projects to compare to. This is an interesting and important direction for future work that is beyond the scope of this paper.  
 
 
 
