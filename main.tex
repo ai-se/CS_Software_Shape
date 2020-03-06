@@ -130,14 +130,11 @@ nature of scientific challenges; (b) the implications of limitations of computer
 What we found was, using this new data from Github, 
 only a minority of those older beliefs  
 can be endorsed.
-More than half of the pre-existing beliefs are dubious, which lead us to conclude that the
+More than half of the pre-existing beliefs are dubious, which leads us to conclude that the
 nature of CS software development is
 changing. Further, going forward, this has implications for
 what kinds of tools
 we would propose to better support computational science.
-
-%XXXX neeed to talk implications
-
 
 \end{abstract}
  
@@ -148,7 +145,7 @@ we would propose to better support computational science.
 
 \maketitle
 \section{Introduction}
-%TODO: It is from our observation that (1) requirements and (2) testing are only low-hanging fruits within the CS community. It is essential for us to do more in-depth analysis of the development code base and social interaction (e.g. mailing lists, issues/commits comments, commit's message, etc) to understand the community.  
+  
 
 Computational Science (hereafter, CS)
 uses software   to explore
@@ -157,12 +154,7 @@ CS is becoming more dependent on software. For instance, a Nobel Prize in 2013 w
 \begin{quote}
 {\em Today the computer is just as important a tool for chemists as the test tube \cite{nobel_2013}.}
 \end{quote}
-%  \bi
-%  \item
-%  The adaptation of scientific projects simulations to new and efficient hardware  (multi-core and heterogeneous systems);
-%  \item The ability for larger teams to co-ordinate (through integration with interdisciplinary teams);
-%  \item How well we can model complex phenomena.
-%  \ei
+
 
 Computational scientists study and develop software that has important and widespread impacts on our society. For instance, in weather forecasting, predictions generated from CS
 software can tell the estimated path of hurricanes. This, in turn,
@@ -223,26 +215,6 @@ we collected and our methods for labelling, then analyzing,
 that data. Then \S3 discusses the general threats to validity of our work. \S4-6 provide background, analysis results for much evidence
 of the changing nature of computational science software. \S7-8 summarize, conclude, and offer future directions of SE for CS research. 
 
-
-
-
-
-
- 
-
-% This is not to say that six of the beliefs of  Table \ref{tab:characteristics} are wrong.
-% Rather we would say that the nature of CS is ever evolving and that old
-% beliefs needs to be rechecked  
-% With the changing state of scientific software development, we should also evolve the tools we use to support software-based-science and the debate around that. 
-
-
-% is that true? Can we audit those
-% beliefs
-
-% mentioned in the 
-% It is inevitable that the two fields must not continue existing in isolation. However, the gap bridging progress of modern SE practices in computational science has remained status quo through 13 recurring underlying causes results from the nature of scientific challenges, from limitations of computers, and from the cultural environment of scientific software development that developed and restated through this past decade by  
-
-
 % Orior researchers 
 % There have been definite efforts in employing these modern SE practices - which was proven to improve the traditional software - for the CS field. This hopefully would be of great assistant to the computational scientists in the fields such as molecular dynamics, quantum chemistry, and computational materials. However, there have not been large scale empirical study and results indicating the validity of these improvement observations while recommending actionable changes for these observations to hold in the scientific context.       
 
@@ -250,9 +222,6 @@ of the changing nature of computational science software. \S7-8 summarize, concl
 % \bi
 % \item
 % Software development practice has aimed for generality of ``all things applied'' perplexing computational scientists focusing on ``domain specific''. 
-
-% Consequently, the rift between these two fields in communication and collaboration was created and has been growing with both productivity and credibility crisis.
-
 
 
 % It is inevitable that the two fields must not continue existing in isolation. However, the gap bridging progress of modern SE practices in computational science has remained status quo through 13 recurring underlying causes results from the nature of scientific challenges, from limitations of computers, and from the cultural environment of scientific software development that developed and restated through this past decade by Carver, Heaton, Basili, and Johanson \cite{carver13_perception, carver07_environment, basili08_hpc, heaton15_lit, johan18_secs}. Johanson et al. \cite{johan18_secs} specifically claims that SE practices will only be integrated if they honored the mentioned 13 characteristics and constraints of scientific software development mentioned in the Table \ref{tab:characteristics}.
@@ -263,15 +232,12 @@ of the changing nature of computational science software. \S7-8 summarize, concl
 
 \section{Preliminaries  } 
 
- 
-
 %The growing dependency of science on computational methods software to make decisions for scientists is inevitable. By enhancing the software's quality, scientists can guarantee the CS work more credible and more productive. Therefore, 
 %better SE improves computational
 %science software, which would lead to better (e.g.) weather prediction and the faster creation of new industries based on new materials.
 
 \subsection{Modelling Assumptions (and ``Indicators'')}\label{model}
 
- 
 The reasoning of this 
 paper makes
 modeling assumptions in order to bridge between the terminology of the belief and the terms in the Github data.  For example, consider the belief 1.b ``Verification and validation in software development for CS are difficult''.  
@@ -318,7 +284,7 @@ to select 59  projects with sufficient software development information
 \definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}\definecolor{cadetblue}{rgb}{0.37, 0.62, 0.63}
 \begin{figure*}[!t]
 \vspace{5pt}
-\centering \includegraphics[width=\linewidth]{img/Figure_1.png}
+\centering \includegraphics[width=.975\linewidth]{img/Figure_1.png}
 \caption{Data distributions from 1300 SE projects (shown in \colorbox{cadetblue}{ \textcolor{white}{teal}}) \& 59 CS projects (shown in \colorbox{amethyst}{ \textcolor{white}{purple}}).}\label{fig:comparison}
 \end{figure*}    
 
@@ -344,6 +310,7 @@ a sample of 1037 Github projects from~\cite{Majumder19}.
 There is no overlap between the CS projects and the Github sample. Also, all the Github
 sample passes the sanity checks of Table \ref{tbl:sanity}. Figure~\ref{fig:comparison} uses the following terminology.
 
+
 \textit{Developers}: Developers are the contributors to a project, who code and submit their code using commit to the code base. The number of developers signifies the interest of developers in actively participating in the project and volume of the work.
   
   
@@ -361,18 +328,7 @@ sample passes the sanity checks of Table \ref{tbl:sanity}. Figure~\ref{fig:compa
 
 
 
-\begin{figure*}[!b]
-\begin{center}\includegraphics[width=.6\linewidth]{img/belief1_1.png}\end{center} 
-\caption{Median percent  of total commits seen
-at 10, 20, 30, ... 100\% of 
-the time these projects were
-documented in Github.
-X-axis measures time as percent of days seen in Github.
-Note
-that all commit types occur
-at a similar, and near constant,
- rate, across the lifetime of a project.}\label{fig:belief1} 
-\end{figure*}
+
 
 \textit{Stars:} A repository's stars signify how many people
   ``liked'' a project enough to create a bookmark to follow its future progress.
@@ -408,12 +364,10 @@ Figure~\ref{fig:comparison} is saying:
 \end{quote} 
 
      
-
-
-
  \subsection{Labelling}
  When code is shared
 within a software repository, an important event is the {\em commit comments}. These comments are the remarks developers make to document and justify some updates to the code, i.e. a rich source of information about a project. Code repository systems such as Github store tens of millions of these comments that are utilized as a rich source of information about a project within SE literature. For instance, within SE literature,  Vasilescu et. al \cite{vasilescu16_limit} and Menzies et. al \cite{xia2019sequential} studied commits as an indicator for development effort.
+
 
 To understand the scientific development process, we manually categorized the commit comments seen within CS
 software. 
@@ -451,31 +405,6 @@ neither of which had access to the other's labels. Moreover, the reviewers did n
 labeling disagreement was low (just 19\%). When labels disagreed, the commit was given to our most experienced reviewer who made an executive decision about what
 was the correct label.
 
-% In all, this labelling process required 320 hours and was conducted by 10 computer science Ph.D. students (all of which are researchers in the area of software engineering).
-
-
-
-
- 
-
-
-
-
-% \subsection{Software Development}
-
-% Scientific software are initiated, developed, and managed by a few senior researchers (university's professors and researchers at research institute). Yet, the majority of developers in the science field are novices (PhD students
-% and early postdoctoral researchers) \cite{johan18_secs}. Such senior researchers are considered as Hero/Core/Lone contributors. In the literature , it is used to define a hero project as one where 80\% of the contributions are made by 20\% of the developers \cite{agrawal2018we, goeminne2011evidence, torres2011analysis, robles2009evolution}. 
-
-
-  
-
-% By examining the code interaction/contribution, developer's code contribution is found and validated along with the defect introduction percentage accordingly. 
-
-
-
-
-
-
 \subsection{Beliefs We Cannot Explore (Using Github)}
 
 Github stores data about code and the comments seen during code reviews and pull requests. While this is useful for assessing most of the beliefs of Table~\ref{tab:characteristics}, it does mean that at least three of the thirteen beliefs, summarized by Johanson et al. \cite{johan18_secs}, cannot be explored by this paper:
@@ -491,6 +420,9 @@ performance or portability or maintainability. Specifically, performance issues 
 relating to hardware,
 the information rarely exists on Github. 
 \ee
+
+
+
 
 \section{Threats to Validity}
 
@@ -527,29 +459,6 @@ the {\em modeling assumptions} used to design those indicators.
 % is required to do, how its output is supposed to look like, and how to proceed
 % during its development. 
 
-\begin{figure*}[!b]
-\hspace{-3mm}
-\begin{center}
-%ken... step away!!!
-% i'm trying to push us more into page10 by making these figures bigger
-\begin{minipage}{.5\textwidth}
-        \centering \hspace{-3mm}
-       CS Development
-\end{minipage}%
-\begin{minipage}{0.5\textwidth}
-        \centering
-    SE Development
-\end{minipage}
-
-\resizebox{1\linewidth}{!}{
-\hspace{-2mm}\includegraphics[width=.35\textwidth]{img/CS_commits_1.png}
-\hspace{3mm}
-\includegraphics[width=.38\textwidth]{img/SE_commits_1.png}
-}
-\end{center}
-\caption{Distribution of development within our sample of 59 CS projects (top) and 20 top sampled SE projects (bottom).}
-\label{fig:SE_activities}
-\end{figure*}
 
 \subsection{Requirements}\label{rments}
 
@@ -610,22 +519,19 @@ scientific or engineering functionality.
 \noindent \textit{\underline{Prediction: }} If CS software was written in response to some pre-existing set of requirements, then
 we would expect to see bug-fixing and testing to be a predominately end-stage activity.
 
-% Under these assumptions, if we trace
-% the kinds of commits seen across the lifetime
-% of a project, we should see:
-% \bi
-% \item Early in the project's lifetime, 
-%  far more enhancements than 
-% bug-fixing and testing commits;
 
-% \item Later in the project's lifetime, 
-% far more testing and bug fixing commits
-% than enhancements.
-% \ei
-
-
-
-
+\begin{figure}[!t]
+\begin{center}\includegraphics[width=\linewidth]{img/belief1_1.png}\end{center} 
+\caption{Median percent  of total commits seen
+at 10, 20, 30, ... 100\% of 
+the time these projects were
+documented in Github.
+X-axis measures time as percent of days seen in Github.
+Note
+that all commit types occur
+at a similar, and near constant,
+ rate, across the lifetime of a project.}\label{fig:belief1} 
+\end{figure}
 \noindent \textit{\underline{Observed:}} 
 As shown in \fig{belief1}, the rate
 of commits of different types
@@ -639,6 +545,23 @@ We \textbf{endorse} the belief that, in CS, project requirements are usually not
 at the start of a project.
 \end{RQ}
  
+\begin{figure}[!b]
+
+\begin{center}
+CS Development 
+ 
+
+ \includegraphics[width=.4\textwidth]{img/CS_commits_1.png}
+
+ SE Development
+
+ 
+\includegraphics[width=.45\textwidth]{img/SE_commits_1.png}
+ 
+\end{center}
+\caption{Distribution of development within our sample of 59 CS projects (top) and 20 top sampled SE projects (bottom).}
+\label{fig:SE_activities}
+\end{figure}
 %Table \ref{tbl:everything}, the ratio between the maintenance commits (bug-fixes) versus new development (scientific and engineering enhancement) can be derived as 11\%/(37\% + 28\%) or approximately 1/6. It is a strong indication that research scientists are mostly doing the new requirements or the requirement specifications not known fully and up-front.
 
 
@@ -666,32 +589,19 @@ verification and validation of scientific software should be difficult for sever
   \item Lack of physical experimentation and experimental validation is impractical \cite{carver07_environment}. 
 \ei
 
-% \begin{table}[!t]
-% \caption{Labels of development types, generated via manual cross-inspection on 4000 random bug-fixing commits of 20 CS projects.
-% }\label{tbl:everything}
-% \vspace{3mm}
 
-% \begin{center}
-% %\begin{threeparttable}
-% %\vspace{-10pt}
-% %\resizebox{!}{0.2\linewidth}{
-% %\setlength    abcolsep{10pt}
-% \vspace{-10pt}\begin{tabular}{l|c|c}
-% \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Absolute} & \multicolumn{1}{c}{Percentage}\\
-% \hline
-% Bug Fixes & 764 & 19\% \\
-% Scientific Enhancement & 1031 & 26\% \\
-% Engineering Enhancement & 1134 & 29\% \\
-% Testing & 608 & 15\% \\
-% Other & 475 & 12\% 
-% \end{tabular}
-% %}
-% %\end{threeparttable}
-% \end{center}
-% \vspace{3mm}
-% \end{table}
-
-\noindent\textit{\underline{Modeling Assumptions:}} 
+\begin{wraptable}{r}{1.7in}
+\caption{Labels of testing type commits from the labeled Testing commits.}\label{tbl:testing}
+\footnotesize \begin{tabular}{l|c|c}
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Absolute} & \multicolumn{1}{c}{Percent}\\
+\hline
+Science & 289 & 47\% \\
+Engineering & 146 & 24\% \\
+Other & 173 & 29\% 
+\end{tabular}
+%}
+%\end{threeparttable} 
+\end{wraptable}\noindent~\textit{\underline{Modeling Assumptions:}} 
 As stated above in \S\ref{model},
 in order to bridge between the terminology of the belief and the Github data, we assume that (1) V\&V is associated with testing; and (2) the amount of testing is an indicator for V\&V activity.
 
@@ -704,26 +614,19 @@ testing'' that otherwise (e.g. ``engineering testing'').
 
 
 
-
-
-\begin{wraptable}{r}{1.7in}
-\caption{Labels of testing type commits from the labeled Testing commits.}\label{tbl:testing}
-\small \begin{tabular}{l|c|c}
-\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Absolute} & \multicolumn{1}{c}{Percent}\\
-\hline
-Science & 289 & 47\% \\
-Engineering & 146 & 24\% \\
-Other & 173 & 29\% 
-\end{tabular}
-%}
-%\end{threeparttable} 
-\end{wraptable}\noindent ~\textit{\underline{Observed:}}
+\noindent ~\textit{\underline{Observed:}}
 It is easy to show that CS software verification and validation are heavily focused on scientific issues.
-Table \ref{tbl:testing} shows that ``scientific testing'' is the largest type of commit in our labeled Testing commits sample (at 45\%). Far less effort is spent on ``engineering testing'' (only 17\%). 
+Table \ref{tbl:testing} shows that ``scientific testing'' is the largest type of commit in our labeled Testing commits sample (at 45\%). 
+Far less effort is spent on ``engineering testing'' (only 24\%). 
 As to showing the CS verification and validation is ``more difficult'' than in SE,
-the top chart of Figure \ref{fig:SE_activities} shows the 6\% percent of commits in standard SE projects associated with testing. This data comes from a recent study \cite{tu2019better} of the top-20 highly starred from Github that satisfies our sanity checks of Table~\ref{tbl:sanity}.
-Since 15\% is 2.5 times larger than 6\%, for verification and validation, 
-far more effort is being spent in CS projects than SE.
+  Figure \ref{fig:SE_activities} shows that
+  15\%, 6\% percent of the commits
+  are associated with CS, SE testing (repsetively).   This SE data comes from a recent study \cite{tu2019better} of the top-20 highly starred from Github that satisfies our sanity checks of Table~\ref{tbl:sanity}.
+Note that  15\% is 2.5 times larger than 6\%. That is
+to say, for  verification and validation, 
+much more effort is being spent in CS projects than SE.
+
+
 
 A conflating factor that might make us doubt this observation would be if the CS codes were always much smaller than the SE codes. If that were true then even if some tasks had a larger percentage effort 
 (e.g. Table \ref{tbl:testing}'s ``scientific testing'') then  ``relatively more'' might actually
@@ -916,6 +819,18 @@ on domain logic and implementation details.
 
 
 
+\begin{figure*}[!b]
+\resizebox{1\linewidth}{!}{
+ \hspace{-2mm}
+ \includegraphics[width=0.5\linewidth]{img/SE_heroes_commits.png}
+ \hspace{2mm}
+ \includegraphics[width=0.5\linewidth]{img/CS_heroes_commits.png}}
+
+\caption{Percent of code commits that introduce new bugs, made by hero and non-hero developers from  SE projects (left) and CS projects (right).
+Each x-axis of that figure is one project so the hero and non-hero defect introduction rate (defects per commit) is the ratio of the blue to red numbers
+at any specific x-value.
+}\label{fig:heroes}
+\end{figure*}
 
 \section{Beliefs about Limitations Due to Cultural Differences}
 
@@ -928,79 +843,7 @@ that it is hard to translate concepts between  CS and SE (since the fields are s
 lines (like SE and CS) it is possible that the terminology of one field has important
 differences in the other field. This is worrying if those terminology differences mean that methods from one field perform poorly in the other.
 
-% \resizebox{\linewidth}{!}{
-% \hspace{-10pt}\begin{minipage}{0.54\linewidth}
-% \begin{tabular}{r@{~}|r@{~}|r@{~}}
-% \multicolumn{1}{c|}{} & \multicolumn{2}{c}{\textbf{\% G-score Wins}} \\
-% \cline{2-3}
-% \begin{tabular}[c]{@{}c@{}} \textbf{Dataset} \end{tabular} & 
-% \multicolumn{1}{c|}{\textbf{SE}} & \multicolumn{1}{c}{\textbf{CS}} \\ \hline
-% PCMSOLVER &  \cellcolor{gray!20} 100 (1/1) & 0 (0/1) \\ 
-% AMBER &  \cellcolor{gray!20} 67 (2/3) & 33 (1/3) \\ 
-% HOOMD & 40 (2/5) &  \cellcolor{gray!20} 60 (3/5)\\ 
-% RMG-PY  & 40 (2/5) &  \cellcolor{gray!20} 60 (3/5)\\ 
-% ABINIT & 25 (2/8) &  \cellcolor{gray!20} 63 (5/8) \\ 
-% LIBMESH & 28 (2/7) &  \cellcolor{gray!20} 72 (5/7)  \\  
-% MDANALYSIS & 28 (2/7) &  \cellcolor{gray!20} 72 (5/7) \\ 
-% LAMMPS & 25 (2/8) &  \cellcolor{gray!20} 75 (6/8)\\
-% XENON & 17 (1/6) &  \cellcolor{gray!20} 83 (5/6)  
-% \\  
-% \end{tabular}  %
-% \end{minipage} \
-% \begin{minipage}{0.60\linewidth}
-% %\centering
 
-% \begin{tabular}{r@{~}|r@{~}|r@{~}}
-% \multicolumn{1}{c|}{} & \multicolumn{2}{c}{\textbf{\% $P_{opt}20$ Wins}} \\
-% \cline{2-3}
-% \begin{tabular}[c]{@{}c@{}} 
-% \textbf{Dataset} \end{tabular} & \multicolumn{1}{c|}{\textbf{SE}} & \multicolumn{1}{c}{\textbf{CS}} \\ \hline
-% PCMSOLVER &  \cellcolor{gray!20} 100 (1/1) & 0 (0/1) \\ 
-% XENON &  \cellcolor{gray!20} 50 (3/6) &  \cellcolor{gray!20} 50 (3/6)\\
-% MDANALYSIS & 43 (3/7) &  \cellcolor{gray!20} 57 (4/7)\\ 
-% LIBMESH & 14 (1/7) &  \cellcolor{gray!20} 57 (4/7)\\  
-% HOOMD & 40 (2/5) &  \cellcolor{gray!20} 60 (3/5)\\ 
-% LAMMPS & 25 (2/8) &  \cellcolor{gray!20} 63 (5/8)\\
-% ABINIT & 25 (2/8) &   \cellcolor{gray!20} 63 (5/8)\\
-% AMBER & 33 (1/3) &  \cellcolor{gray!20}  67 (2/3)\\
-% RMG-PY & 0 (0/5) &  \cellcolor{gray!20}  80 (4/5)
-% \\
-% \end{tabular}
-% \end{minipage}}
-% %\end{center} 
-% \vspace{10pt}
-
-
-% \noindent \textit{\underline{Modeling Assumptions:}} 
-% \bi
-% \item Terminologies are regarded here as how scientists describe their work in the commits documentation. 
-% \item The difference between using off-the-shelf SE method versus tuned method that learn the CS language to label CS commits is the indicator.
-% \ei
-
-% \begin{figure*}
-%   \includegraphics[width=15cm]{img/rq3_1.png}
-% \caption{Given $N$ releases of CS projects, learn predictors on release $i-1$ then
-% test on release $i$.  Y-axis shows harmonic means of recall and false alarm ({\em larger} values
-% are {\em better}). Each X-axis point is one release of a CS project.  
-% If a green triangle
-% is found  above a red square, then
-% labelling defeats via EMBLEM is better than using 
-% standard SE methods.  
-%   }\label{fig:redgreen}
-% \end{figure*}
-
-\begin{figure*}[!t]
-\resizebox{1\linewidth}{!}{
- \hspace{-2mm}
- \includegraphics[width=0.5\linewidth]{img/SE_heroes_commits.png}
- \hspace{2mm}
- \includegraphics[width=0.5\linewidth]{img/CS_heroes_commits.png}}
-
-\caption{Percent of code commits that introduce new bugs, made by hero and non-hero developers from  SE projects (left) and CS projects (right).
-Each x-axis of that figure is one project so the hero and non-hero defect introduction rate (defects per commit) is the ratio of the blue to red numbers
-at any specific x-value.
-}\label{fig:heroes}
-\end{figure*}
 
 
 
@@ -1118,8 +961,11 @@ developers who do work less frequently with the code are more prone to introduce
 (rationale: the greater the complexity of the code, the greater the effort required to understand it).
 Hence, one measure of the complexity of understanding code
 is the difference in defect rates between core developers, also known as ``heroes''~\cite{agrawal2018we, goeminne2011evidence, torres2011analysis, robles2009evolution}, and everyone else.
-Heroes are that  20\% group of the developers who usually make 80\% (or more) of the code changes\footnote{ Majumder et al.~\cite{majumder19_heroes} found that such heroes are very common in open source projects. Their threshold for ``hero-ness'' are the 20\% of developers
-who make 80\% of the changes.}.
+Heroes are that  20\% group of the developers who usually make 80\% (or more) of the code changes
+
+(Aside:   Majumder et al.~\cite{majumder19_heroes} found that such heroes are very common in open source projects. Their threshold for ``hero-ness'' are the 20\% of developers
+who make 80\% of the changes.).
+
 If the defect rate is much higher for non-heroes, that would
 indicate that the code is so complex that it can only
 be safely changed by those who have studied it in great detail.
@@ -1127,6 +973,9 @@ be safely changed by those who have studied it in great detail.
 
 \noindent \textit{\underline{Prediction: }} If CS code is hard to understand than SE code, we would expect that non-hero CS programmers would
 introduce {\em more} defects into the software than non-hero SE programmers. 
+
+
+
 
 \noindent \textit{\underline{Observed:}} Majumder et al. \cite{majumder19_heroes} checked the heroes projects for both heroes and non-heroes contribution of defects within software development. They found that non-heroes introduced 30 to 90\% more defects per commit (25th-75th percentiles) in SE projects. Those
 results can be see Figure \ref{fig:heroes} (left-hand-side).
@@ -1401,7 +1250,8 @@ This means that CS projects are over three times more likely to be {\em sane}:
 From these observations, the picture that emerges is that CS developers are very good at adopting contemporary  SE approaches to SE development. More specifically, CS developers
 use software engineering best practices   at least as much (and perhaps even more) that SE developers. 
 
-
+\
+Hence, we say: 
 \begin{RQ}
 \textit{\underline{Conclusion:}} We \textbf{doubt} this a lack of formal training in SE is inhibiting CS development
 \end{RQ}
