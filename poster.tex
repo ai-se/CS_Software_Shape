@@ -1,0 +1,267 @@
+\pdfoutput=1
+\documentclass[sigconf]{acmart}
+%\usepackage{draftwatermark}
+%\SetWatermarkText{Draft}
+\usepackage{balance}
+\setcounter{tocdepth}{3}
+%\usepackage{cite}
+\usepackage{graphicx}
+%\usepackage{showframe}
+\usepackage{enumitem}
+\usepackage[skins]{tcolorbox}
+\usepackage{dblfloatfix}  
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{times}
+%\usepackage[dvipsnames]{xcolor}
+\usepackage{rotating}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usetikzlibrary{angles}
+\usepackage{makecell}
+\usepackage{tabu}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{framed} 
+\usepackage{newtxmath,amsmath}
+\usepackage[framemethod=tikz]{mdframed}
+\usetikzlibrary{shadows}
+\usepackage{graphics}
+\newmdenv[
+tikzsetting= {fill=gray!10},
+linewidth=1pt,
+roundcorner=2pt,
+shadow=false
+]{myshadowbox}
+%\usepackage[framed]{ntheorem}
+
+\newcommand{\bluecheck}{}%
+\DeclareRobustCommand{\greencheck}{%
+  \tikz\fill[scale=0.25, color=green]
+  (0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;%
+}
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\newenvironment{result}[2]
+{\begin{myshadowbox}\textbf{\textit{\underline{Lesson#1:}}} #2}{
+\end{myshadowbox}}
+
+\makeatletter
+\let\th@plain\relax
+\makeatother
+
+\hypersetup{
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\newcommand{\tikzhighlightanchor}[1]{\ensuremath{\vcenter{\hbox{\tikz[remember picture, overlay]{\coordinate (#1 highlight \arabic{highlight});}}}}}
+
+\setlist[itemize]{leftmargin=0.4cm}
+\setlist[enumerate]{leftmargin=0.4cm}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\fig}[1]{Figure~\ref{fig:#1}}
+\newcommand{\eq}[1]{Equation~\ref{eq:#1}}
+\newcommand{\tion}[1]{\S\ref{sect:#1}}
+
+\newenvironment{RQ}{\vspace{1mm}\begin{tcolorbox}[enhanced,width=3.4in,size=fbox,colback=red!5!white,drop shadow southeast,sharp corners]}{\end{tcolorbox}}
+
+\usepackage{url}
+%\newcommand{\keywords}[1]{\par\addvspace\baselineskip \noindent\keywordname\enspace\ignorespaces#1}
+%%% graph
+\newcommand{\crule}[3][darkgray]{\textcolor{#1}{\rule{#2}{#3}}}
+
+\tikzstyle{thmbox} = [rectangle, rounded corners, draw=black, fill=gray!10]
+\newcommand\thmbox[1]{%
+	\noindent\begin{tikzpicture}%
+	\node [thmbox] (box){%
+		\begin{minipage}{.94\textwidth}%
+		\vspace{-0.1cm}#1\vspace{-0.1cm}%
+		\end{minipage}%
+	};%
+	\end{tikzpicture}}
+
+\newcommand{\quartex}[4]{
+\begin{picture}(25,6)%1
+    {
+        \color{black}
+        \put(#3,3)
+        {\circle*{4}}
+        \put(#1,3)
+        {\line(1,0){#2}}
+    }
+\end{picture}
+}
+
+\acmConference[ACM Richard Tapia]{ACM Richard Tapia Celebration of Diversity in Computing}{16 - 19 September, 2020}{Dallas, Texas, United States}
+
+\title[Changing  Nature of CS Software]{The Changing Nature of Computational Science Software}
+\author{Huy Tu}
+\affiliation{Computer Science, NC State, USA} \email{hqtu@ncsu.edu}
+%
+%
+\date{December 2019}
+
+
+\begin{abstract}
+How should software engineering be
+ adapted for Computational Science (CS)?
+If we understood that,
+then we could better support software sustainability, verifiability, reproducibility, comprehension, and usability for CS community.
+For example, improving the 
+maintainability of the CS code could lead to:
+(a) faster adaptation of scientific project simulations to new and efficient hardware (multi-core and heterogeneous systems); (b) better support  for larger teams to co-ordinate (through integration with interdisciplinary teams); and (c) an extended capability to  model complex phenomena. 
+
+
+
+In order to better understand computational science, this paper uses quantitative evidence (from 59 CS projects in Github) 
+to check
+ 13 published beliefs about  CS. These beliefs reflect on
+  (a)  the
+nature of scientific challenges; (b) the implications of limitations of computer hardware; and (c) the cultural environment of scientific software development. 
+What we found was, using this new data from Github, 
+only a minority of those older beliefs  
+can be endorsed.
+More than half of the pre-existing beliefs are dubious, which leads us to conclude that the
+nature of CS software development is
+changing. 
+
+Further, going forward, this has implications for
+(1) what kinds of tools
+we would propose to better support computational science and (2) research directions for both communities.
+
+\end{abstract}
+ 
+\keywords{Beliefs, Mining Software Repositories, Computational Science, Empirical Software Engineering}
+
+\begin{document}
+
+
+\maketitle
+
+\section{Introduction}
+  
+
+Computational Science (hereafter, CS)
+field studies and develops software   to explore
+ astronomy, astrophysics, chemistry, economics, genomics, molecular biology, oceanography, physics, political science,  and many   engineering fields 
+There is an increasing reliance of computational methods software for science. For instance, a Nobel Prize in 2013 went to chemists using computer models to explore chemical reactions during photosynthesis. In the press release of the award, the Nobel Prize committee wrote:
+
+\begin{quote}
+{\em Today the computer is just as important a tool for chemists as the test tube \cite{nobel_2013}.}
+\end{quote}
+
+
+Computational scientists explore software models than manually explore the physical effects they represent because it is done in real-time, more precise, faster, cheaper, and safer.   Moreover, scientific software have important and widespread impacts on our society. Specifically, in weather forecasting, predictions generated from CS
+software can tell the estimated path of hurricanes. This, in turn,
+allows (e.g.) affected homeowners to better protect themselves from
+damaging winds. 
+
+%From these examples, there are multiple good reasons for increasing reliance on computational methods software for science such as it is real-time, more precise, faster, cheaper, and safer to explore software models than manually explore the physical effects they represent. For instance, CS software can explore the effects of several 
+%hurricanes 
+%scenarios and nuclear reactions without risk to human life
+%or property~\cite{heaton15_lit}.
+
+There is much demand for better software engineering (SE) methods
+for CS. For example, an investigation of the 
+quality of scientific software during the ``Climategate'' scandal \cite{merali10_error} found little to no reproducibility of CS results. Improving the verifiability and maintenance of CS code would hence increase the credibility of CS results and implications. Table \ref{tab:characteristics}
+lists some of the prior results
+where empirical software
+engineering researchers have explored computational science
+(this table comes from the work of
+Carver, Heaton, Basili, and Johanson \cite{carver13_perception, carver07_environment, basili08_hpc, heaton15_lit, johan18_secs}, and others).
+Johanson et al. \cite{johan18_secs}   argues that SE practices will only be integrated into CS when
+those practices take advantage of
+the   13 beliefs  of
+Table~\ref{tab:characteristics}. 
+ 
+
+\input{difficulties.tex}
+
+Just  because  prior research endorsed
+ ``X'' does not mean that  ``X'' is relevant in the current context. There are numerous examples of long-held beliefs which, on re-evaluated, proved to be incomplete or outdated~\cite{menzies17,dev16}. 
+Given that, and the prominence  of 
+computational science, it is 
+well past time for a second look at the beliefs of 
+Table~\ref{tab:characteristics}. 
+
+A recent trend is that CS researchers store their code on open source repositories (such as Github).
+Our study of the 13 beliefs mines the code and comments of dozens of the repositories of  those CS projects. Three of those beliefs cannot be explored using the data available in Github. For the remaining:
+\bi
+\item Assuming each belief held,
+we described what effect   we would expect to see in project data,
+\item Then we check if that effect actually exists in the data.
+If so, then  we  {\em endorse} that belief. Otherwise, we have cause to {\em doubt} it. 
+\ei
+
+Based on the analysis of 59 CS projects, our findings and contributions include: 
+\be
+\item Contrary to prior research, only small number of proposed beliefs in \cite{johan18_secs} are endorsed. As discussed at the end of this paper, this has implications for the research practices and what kinds of tools we would propose to better support CS. 
+\item The relevance of the scientific software development beliefs may change according to time.
+In this regard, it is apropos to note that
+  much of the prior analysis that leads to Table \ref{tab:characteristics} was qualitative in nature (i.e. impossible to reproduce, check, or refute). This work, on the other hand, is quantitative in nature. Hence, it can be be reproduced/improved or even refuted when.  To assist in that process,  we have posted all our data and scripts at
+\url{https://github.com/se4cs/se4cs}. 
+\ee
+
+The rest of this paper is structured as follows.
+The next section offers some preliminary notes on the data
+we collected and our methods for labelling, then analyzing,
+that data. Then \S3 discusses the general threats to validity of our work. \S4-6 provide background, analysis results for much evidence
+of the changing nature of computational science software. \S7-8 summarize, conclude, and offer future directions of SE for CS research. 
+
+% Orior researchers 
+% There have been definite efforts in employing these modern SE practices - which was proven to improve the traditional software - for the CS field. This hopefully would be of great assistant to the computational scientists in the fields such as molecular dynamics, quantum chemistry, and computational materials. However, there have not been large scale empirical study and results indicating the validity of these improvement observations while recommending actionable changes for these observations to hold in the scientific context.       
+
+% It is important first to identify and understand how scientific software development differentiates from Software Engineering (hereafter, SE) development. Faulk et al. and Hannay et al. \cite{hannay09_secs, faulk09_secs} note that a ``wide chasm'' of how these two fields are speaking a common language, yet ``separated'' by upholding to a different cultures and values:
+% \bi
+% \item
+% Software development practice has aimed for generality of ``all things applied'' perplexing computational scientists focusing on ``domain specific''. 
+
+
+% It is inevitable that the two fields must not continue existing in isolation. However, the gap bridging progress of modern SE practices in computational science has remained status quo through 13 recurring underlying causes results from the nature of scientific challenges, from limitations of computers, and from the cultural environment of scientific software development that developed and restated through this past decade by Carver, Heaton, Basili, and Johanson \cite{carver13_perception, carver07_environment, basili08_hpc, heaton15_lit, johan18_secs}. Johanson et al. \cite{johan18_secs} specifically claims that SE practices will only be integrated if they honored the mentioned 13 characteristics and constraints of scientific software development mentioned in the Table \ref{tab:characteristics}.
+% Traditional SE environments such as businesses or IT companies have used SE practices, it is puzzling of how the scientific software developers not using them or not using them effectively. Throughout literatures, there have not been a quantitative study of these 13 characteristics and constraints in order to give a more empirical view of the scientific software development practices in comparison with the traditional SE practices. 
+
+
+
+\section{Conclusion}
+
+%he premise of the prior research \cite{johan18_secs} is underlying shortcomings of existing approaches for bridging the gap between Software Engineering and Computational Science can be identified by the 13 recurring characteristics or beliefs.
+Through a quantitative investigation on 59 projects, we have found several disconnects between current data
+and some-held beliefs about computational science.
+Why are so many of those older beliefs not supportable?
+We argue that  the  nature of the CS software development is changing. 
+For example, contrary to much prior pessimism,
+CS developers are now very
+aware of SE methods. 
+We can see much evidence that CS developers are making
+extensive use of SE methods.
+
+ 
+ The current work here lays out highlighted perspectives, quantitative evidence to clarify existing beliefs about scientific software development.
+ We hope these results  prompt a fresh examination of the nature of SE in  CS which, in turn, might suggests 
+  new   specialized supporting tools for CS.
+For example, requirements and unit and system testing  are considered hot topics in in the SE community.
+But for CS projects,   studying  (a)~scientific testing (b)~development and
+(c)~operations might be comparatively more useful.
+
+
+
+% Therefore, more
+% research on this topic is needed, especially to empirically evaluate the 
+% gains in productivity and credibility achieved for scientific software by such
+% SE approaches. 
+
+\balance
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{sample.bib}
+
+\end{document}

@@ -1,4 +1,5 @@
-\documentclass[sigconf,review,anonymous]{acmart}
+\pdfoutput=1
+\documentclass[sigconf]{acmart}
 %\usepackage{draftwatermark}
 %\SetWatermarkText{Draft}
 \usepackage{balance}
@@ -114,8 +115,8 @@ shadow=false
 \begin{abstract}
 How should software engineering be
  adapted for Computational Science (CS)?
-If we   understood that software,
-then we could better support software sustainability, verifiability, reproducibility, comprehension, and usability for that community.
+If we understood that,
+then we could better support software sustainability, verifiability, reproducibility, comprehension, and usability for CS community.
 For example, improving the 
 maintainability of the CS code could lead to:
 (a) faster adaptation of scientific project simulations to new and efficient hardware (multi-core and heterogeneous systems); (b) better support  for larger teams to co-ordinate (through integration with interdisciplinary teams); and (c) an extended capability to  model complex phenomena. 
@@ -132,36 +133,40 @@ only a minority of those older beliefs
 can be endorsed.
 More than half of the pre-existing beliefs are dubious, which leads us to conclude that the
 nature of CS software development is
-changing. Further, going forward, this has implications for
-what kinds of tools
-we would propose to better support computational science.
+changing. 
+
+Further, going forward, this has implications for
+(1) what kinds of tools
+we would propose to better support computational science and (2) research directions for both communities.
 
 \end{abstract}
  
-\keywords{Computational Science, Software Engineering}
+\keywords{Beliefs, Mining Software Repositories, Computational Science, Empirical Software Engineering}
 
 \begin{document}
 
 
 \maketitle
+
 \section{Introduction}
   
 
 Computational Science (hereafter, CS)
-uses software   to explore
+field studies and develops software   to explore
  astronomy, astrophysics, chemistry, economics, genomics, molecular biology, oceanography, physics, political science,  and many   engineering fields 
-CS is becoming more dependent on software. For instance, a Nobel Prize in 2013 went to chemists using computer models to explore chemical reactions during photosynthesis. In the press release of the award, the Nobel Prize committee wrote:
+There is an increasing reliance of computational methods software for science. For instance, a Nobel Prize in 2013 went to chemists using computer models to explore chemical reactions during photosynthesis. In the press release of the award, the Nobel Prize committee wrote:
+
 \begin{quote}
 {\em Today the computer is just as important a tool for chemists as the test tube \cite{nobel_2013}.}
 \end{quote}
 
 
-Computational scientists study and develop software that has important and widespread impacts on our society. For instance, in weather forecasting, predictions generated from CS
+Computational scientists explore software models than manually explore the physical effects they represent because it is done in real-time, more precise, faster, cheaper, and safer.  For instance, in material science, CS explores the properties
+of new materials by synthesizing them, which is very expensive so standard practice is to use software to determine
+those properties (e.g. via a finite element analysis). This, in turn, enables (e.g.) the faster transition of new materials to industry. Moreover, scientific software have important and widespread impacts on our society. Specifically, in weather forecasting, predictions generated from CS
 software can tell the estimated path of hurricanes. This, in turn,
 allows (e.g.) affected homeowners to better protect themselves from
-damaging winds. In material science, CS explores the properties
-of new materials by synthesizing them, which is very expensive so standard practice is to use software to determine
-those properties (e.g. via a finite element analysis). This, in turn, enables (e.g.) the faster transition of new materials to industry.
+damaging winds. 
 
 %From these examples, there are multiple good reasons for increasing reliance on computational methods software for science such as it is real-time, more precise, faster, cheaper, and safer to explore software models than manually explore the physical effects they represent. For instance, CS software can explore the effects of several 
 %hurricanes 
@@ -185,30 +190,31 @@ Table~\ref{tab:characteristics}.
 \input{difficulties.tex}
 
 Just  because  prior research endorsed
- ``X'' does not mean that  ``X'' is relevant in the current context. There are numerous examples of long-held beliefs which, on reexamination, proved to be incomplete or outdated~\cite{menzies17,dev16}. 
+ ``X'' does not mean that  ``X'' is relevant in the current context. There are numerous examples of long-held beliefs which, on re-evaluated, proved to be incomplete or outdated~\cite{menzies17,dev16}. 
 Given that, and the prominence  of 
 computational science, it is 
 well past time for a second look at the beliefs of 
 Table~\ref{tab:characteristics}. 
 
 A recent trend is that CS researchers store their code on open source repositories (such as Github).
-Our study of the 13 beliefs mines the code and comments of dozens of the repositories of  those CS projects.
-We found that three of those beliefs cannot be explored using the data available in Github. For the remaining:
+Our study of the 13 beliefs mines the code and comments of dozens of the repositories of  those CS projects. Three of those beliefs cannot be explored using the data available in Github. For the remaining:
 \bi
 \item Assuming each belief held,
 we described what effect   we would expect to see in project data,
-\item Then we check if that effect actually exist in the data,
-If it did,then  we  {\em endorsed} that belief. Otherwise, we have cause to {\em doubt} it. 
+\item Then we check if that effect actually exists in the data.
+If so, then  we  {\em endorse} that belief. Otherwise, we have cause to {\em doubt} it. 
 \ei
 
 Based on the analysis of 59 CS projects, our findings and contributions include: 
 \be
 \item Contrary to prior research, only small number of proposed beliefs in \cite{johan18_secs} are endorsed. As discussed at the end of this paper, this has implications for the research practices and what kinds of tools we would propose to better support CS. 
+\pagebreak
 \item The relevance of the scientific software development beliefs may change according to time.
 In this regard, it is apropos to note that
   much of the prior analysis that leads to Table \ref{tab:characteristics} was qualitative in nature (i.e. impossible to reproduce, check, or refute). This work, on the other hand, is quantitative in nature. Hence, it can be be reproduced/improved or even refuted when.  To assist in that process,  we have posted all our data and scripts at
 \url{https://github.com/se4cs/se4cs}. 
 \ee
+
 The rest of this paper is structured as follows.
 The next section offers some preliminary notes on the data
 we collected and our methods for labelling, then analyzing,
@@ -230,7 +236,7 @@ of the changing nature of computational science software. \S7-8 summarize, concl
  
  
 
-\section{Preliminaries  } 
+\section{Preliminaries} 
 
 %The growing dependency of science on computational methods software to make decisions for scientists is inevitable. By enhancing the software's quality, scientists can guarantee the CS work more credible and more productive. Therefore, 
 %better SE improves computational
@@ -240,7 +246,7 @@ of the changing nature of computational science software. \S7-8 summarize, concl
 
 The reasoning of this 
 paper makes
-modeling assumptions in order to bridge between the terminology of the belief and the terms in the Github data.  For example, consider the belief 1.b ``Verification and validation in software development for CS are difficult''.  
+modeling assumptions in order to bridge between the higher-level concept of the belief to what are measurable through the Github data. For example, consider the belief 1.b ``Verification and validation in software development for CS are difficult''.  
 Having read 10,000s of comments, we can assert that 
 very few commits are labelled  ``verification and validation'' (V\&V) and, of those that are,
 even less use these terms in a consistent manner. Instead, based on our reading of the commits, we could assign labels showing whether or not developers were reporting the results of creating/running tests. Hence, to explore that belief we had to make the following modeling assumptions to bridge between the terminology of the belief and the terms in the Github data: (1) V\&V is associated with testing; and (2) the amount of testing is an indicator for V\&V activity. This modelling assumption that relies on commits to indicate the amount of developers effort in a specific  task is also done by other SE researchers \cite{vasilescu16_limit, xia2019sequential}.
@@ -289,9 +295,9 @@ to select 59  projects with sufficient software development information
 \end{figure*}    
 
 
-\begin{wraptable}{r}{1.5in}
+\begin{table}[!t]
 \caption{Data sanity checks. From \cite{Kalliamvakou:2014}.}\label{tbl:sanity}
-\footnotesize
+\small
  
 %{\small
  \begin{tabular}{r|l}
@@ -304,7 +310,7 @@ Commits & $>$ 20 \\
 Duration  & $>$ 1 year 
 \end{tabular}%}
  
-\end{wraptable}
+\end{table}
 Figure~\ref{fig:comparison} shows some statistics on the data we collected from our 59 CS projects. For comparison purposes, we compare that sample to 
 a sample of 1037 Github projects from~\cite{Majumder19}.
 There is no overlap between the CS projects and the Github sample. Also, all the Github
@@ -341,8 +347,8 @@ sample passes the sanity checks of Table \ref{tbl:sanity}. Figure~\ref{fig:compa
    
   
   The following observation  
-  will become important, later in the paper (when we discuss issues of size conflation).
-Assuming that ``standard'' SE projects are those we see in Github which pass the sanity checks of Table \ref{tbl:sanity}, then:
+  will become important, later in the paper (i.e. issues of size conflation).
+Assuming that ``standard'' SE projects are those we see in Github which pass the sanity checks of Table \ref{tbl:sanity}, then
  Figure~\ref{fig:comparison} shows that
   \begin{quote}
   {\em It is not true that CS projects are usually smaller than standard SE projects.}
@@ -366,7 +372,7 @@ Figure~\ref{fig:comparison} is saying:
      
  \subsection{Labelling}
  When code is shared
-within a software repository, an important event is the {\em commit comments}. These comments are the remarks developers make to document and justify some updates to the code, i.e. a rich source of information about a project. Code repository systems such as Github store tens of millions of these comments that are utilized as a rich source of information about a project within SE literature. For instance, within SE literature,  Vasilescu et. al \cite{vasilescu16_limit} and Menzies et. al \cite{xia2019sequential} studied commits as an indicator for development effort.
+within a software repository, an important event is the {\em commit comments}. These comments are the remarks developers make to document and justify some updates to the code, i.e. a rich source of information about a project. Code repository systems such as Github store tens of millions of these comments that are utilized as a rich source of information about a project within SE literature. For instance, within SE literature,  Vasilescu et. al \cite{vasilescu16_limit} and Menzies et. al \cite{xia2019sequential} studied commits as an indicator for development effort of projects.
 
 
 To understand the scientific development process, we manually categorized the commit comments seen within CS
@@ -421,12 +427,7 @@ relating to hardware,
 the information rarely exists on Github. 
 \ee
 
-
-
-
 \section{Threats to Validity}
-
-For the following, there are two main threats to validity.
 
 \subsection{External Validity}
 Like any data mining paper,
@@ -444,7 +445,6 @@ Accordingly, we make all our scripts and data publicly so that
 are repeatable/ refutable/ improvable can be quickly repeated across multiple projects by anyone with access to Github; and (b)~our current conclusions can be checked against other data, whenever that becomes available.
 
 
-
 \subsection{Construct Validity}
 As mentioned above, the following analysis depends on numerous {\em indicators} to bridge between the belief being explored and the available data. 
 In the following,  we will take care to carefully document
@@ -452,12 +452,6 @@ the {\em modeling assumptions} used to design those indicators.
 
 \section{Beliefs about the Nature of the Scientific Challenge}
 
-% All characteristics of software development in computational science that are
-% listed in this section result from the fact that scientific software is an integral
-% part of a discovery process. When you develop software to explore previously
-% unknown phenomena, it is hard to specify exactly up front what the software
-% is required to do, how its output is supposed to look like, and how to proceed
-% during its development. 
 
 
 \subsection{Requirements}\label{rments}
@@ -493,11 +487,31 @@ to better understand some effects.
 This would make CS software very different to code developed using (e.g.) a waterfall model where the requirements
 are all known at the start of the development.
 
+\begin{figure*}[!b]
+\begin{center}
+\resizebox{1\textwidth}{!}{
+ \hspace{-2mm}\includegraphics[width=.42\textwidth]{img/CS_commits_1.png}
+\includegraphics[width=.47\textwidth]{img/SE_commits_1.png}}
+ 
+\end{center}
+\caption{Distribution of development within our sample of 59 CS projects (left) and 20 top sampled SE projects (right).}
+\label{fig:SE_activities}
+\end{figure*}
 
+\begin{figure}[!t]
+\begin{center}\includegraphics[width=0.9\linewidth]{img/commits_belief1.png}\end{center} 
 
-
-
-% However, as seen here, enhancements, bug-fixing, and testing all occur with a similar and near-constant slope. 
+\caption{Median percent  of total commits seen
+at 10, 20, 30, ... 100\% of 
+the time these projects were
+documented in Github.
+X-axis measures time as percent of days seen in Github.
+Note
+that all commit types occur
+at a similar, and near constant,
+ rate, across the lifetime of a project.}\label{fig:belief1} 
+\vspace{-5mm} 
+\end{figure}
 
 \noindent \textit{\underline{Modeling Assumptions:}} 
 Projects with pre-existing list of fixed requirements 
@@ -513,25 +527,14 @@ scientific or engineering functionality.
 
 
 
-% table 6 can stand by itself instead as a wrapfigure to make for more page. 
-
-
 \noindent \textit{\underline{Prediction: }} If CS software was written in response to some pre-existing set of requirements, then
 we would expect to see bug-fixing and testing to be a predominately end-stage activity.
 
 
-\begin{figure}[!t]
-\begin{center}\includegraphics[width=\linewidth]{img/belief1_1.png}\end{center} 
-\caption{Median percent  of total commits seen
-at 10, 20, 30, ... 100\% of 
-the time these projects were
-documented in Github.
-X-axis measures time as percent of days seen in Github.
-Note
-that all commit types occur
-at a similar, and near constant,
- rate, across the lifetime of a project.}\label{fig:belief1} 
-\end{figure}
+
+
+
+
 \noindent \textit{\underline{Observed:}} 
 As shown in \fig{belief1}, the rate
 of commits of different types
@@ -545,28 +548,6 @@ We \textbf{endorse} the belief that, in CS, project requirements are usually not
 at the start of a project.
 \end{RQ}
  
-\begin{figure}[!b]
-
-\begin{center}
-CS Development 
- 
-
- \includegraphics[width=.4\textwidth]{img/CS_commits_1.png}
-
- SE Development
-
- 
-\includegraphics[width=.45\textwidth]{img/SE_commits_1.png}
- 
-\end{center}
-\caption{Distribution of development within our sample of 59 CS projects (top) and 20 top sampled SE projects (bottom).}
-\label{fig:SE_activities}
-\end{figure}
-%Table \ref{tbl:everything}, the ratio between the maintenance commits (bug-fixes) versus new development (scientific and engineering enhancement) can be derived as 11\%/(37\% + 28\%) or approximately 1/6. It is a strong indication that research scientists are mostly doing the new requirements or the requirement specifications not known fully and up-front.
-
-
-
- %XXXX
 
 
 \subsection{Verification and Validation is Different}\label{vv}
@@ -603,15 +584,13 @@ Other & 173 & 29\%
 %\end{threeparttable} 
 \end{wraptable}\noindent~\textit{\underline{Modeling Assumptions:}} 
 As stated above in \S\ref{model},
-in order to bridge between the terminology of the belief and the Github data, we assume that (1) V\&V is associated with testing; and (2) the amount of testing is an indicator for V\&V activity.
+in order to bridge between the terminology of the belief and the Github data, we assume that (1) V\&V is associated with testing; and (2) the amount of testing is an indicator for V\&V activity. This approach is similar to studies done by Vasilescu et al. \cite{vasilescu16_limit} or Menzies et al. \cite{xia2019sequential}, where the number and the proportion of commits are treated as an indicator for developing efforts of the repositories. 
 
 \noindent ~\textit{\underline{Prediction: }}
 Verification and validation in CS is more
 ``difficult'' than in SE if the observed CS effort in this area
 is much larger than in SE. As to ``strictly scientific'', we should see far more ``scientific
 testing'' that otherwise (e.g. ``engineering testing''). 
-
-
 
 
 \noindent ~\textit{\underline{Observed:}}
@@ -626,16 +605,23 @@ Note that  15\% is 2.5 times larger than 6\%. That is
 to say, for  verification and validation, 
 much more effort is being spent in CS projects than SE.
 
+% \bi
+% \item CS software is written to correspond to physical phenomena, the nature of which may never change (e.g. the atomic weight of iron).
+% \item
+% the highly starred projects in Github) is written to correspond to an ever-changing ecology of platforms, tools, user expectations, and newly-arrive AI algorithms, etc.   
+% Hence, it is not surprising  SE software requires more verification and validation effort than CS software since the problem it addresses are more dynamic.
 
+This result is somewhat strange since it runs counter to standard beliefs in the SE literature (e.g. Brookes argues that unit tests and systems tests will consume half the time of any project~\cite{brooks1995mythical}). One of our conjectures include the larger V\&V effort in SE  is due to the nature of CS problems. CS software is written to correspond to solve endless nature's problems (most are beyond human's understanding) with the requirements are not known up front and software's state are incrementally improved. CS V\&V have to cover both scientific and engineering concerns while SE V\&V at some points would mature to only focusing on verification (especially when SE software is based on production focus). 
 
-A conflating factor that might make us doubt this observation would be if the CS codes were always much smaller than the SE codes. If that were true then even if some tasks had a larger percentage effort 
+More intuitively, by looking at the \textit{Testing} and \textit{Bug-fixing} attributes from Figure \ref{fig:SE_activities}, the bug-fixing activities from SE software development are almost three times as in CS which is the direct result from testing 2.5 times less than CS. Essentially, the \textit{less} developers test, the \textit{more} bugs developers have to fix. After shipping the software, SE developers are more reluctant to test the software while for CS developers, scientific software research and development might be a continuous journey.
+
+Moreover, a conflating factor that might make us doubt this observation would be if the CS codes were always much smaller than the SE codes. If that were true then even if some tasks had a larger percentage effort 
 (e.g. Table \ref{tbl:testing}'s ``scientific testing'') then  ``relatively more'' might actually
 mean ``less'' (in absolute terms). 
-But when we looked for evidence for this conflation, we did not find it.
-As discussed in \S\ref{tion:data},
-our data does not show that  SE projects are larger and more active
+As discussed in \S\ref{tion:data} our data does not show that  SE projects are larger and more active
 than in CS projects.
 
+Hence, 
 
 % Among all the defects fixing, the scientific and engineering defects are at the same rate. Yet, the testing focuses solely on the scientific aspect, almost three times (45\%/17\%), more than engineering testing. In a sense, scientists solely believe that the software is defected due to their science understanding when transferring that to source code while overlooking the engineering aspect. Yet, it is understandable because scientists have a lot of responsibilities (read and write papers, grants, give presentations, develop scientific models, etc) so they can only focus on testing on what they good at, i.e. scientific models. It is possibly useful for the community to incorporate automated SE testing tools for CS projects. 
 
@@ -645,11 +631,7 @@ than in CS projects.
 \textit{\underline{Conclusion:}}
 We \textbf{endorse} the belief that within CS, software development's verification and validation, are difficult and mostly concerned with scientific issues. 
 \end{RQ} 
-%\item CS software is written to correspond to physical phenomena, the nature of which may never change (e.g. the atomic weight of iron).
-%\item
-%the highly starred projects in Github) is written to correspond to an ever-changing ecology of platforms, tools, user expectations, and newly-arrive AI algorithms, etc etc.   
-%Hence, it is not surprising  SE software requires more verification and validation effort than CS software since the problem it addresses are more dynamic.
-%\ei
+
 
 %Whatever the reason, 
 %note that this result calls for a different kind of testing device in CS.  In standard SE, a ``test'' can be something as simple as a unit test (checking if, for example, that subtrees remain in sorted order after insertion).
@@ -819,7 +801,7 @@ on domain logic and implementation details.
 
 
 
-\begin{figure*}[!b]
+\begin{figure*}[!t]
 \resizebox{1\linewidth}{!}{
  \hspace{-2mm}
  \includegraphics[width=0.5\linewidth]{img/SE_heroes_commits.png}
@@ -850,8 +832,8 @@ differences in the other field. This is worrying if those terminology difference
 
 \noindent \textit{\underline{Prediction: }} If the belief is held, then the off-the-shelf SE methods may perform badly of CS projects {\em unless} they first adjust the meaning of their SE terminology.
 
-\noindent \textit{\underline{Observed:}} Tu et al. \cite{tu2019better} found that the concept of ``defect'' was  different in CS and SE.
-Specifically, off-the-shelf defect labeling technologies (that are widely used  in SE \cite{tu2019better,mockus00changeskeys}),
+\noindent \textit{\underline{Observed:}} Tu et al. \cite{tu2019better} found that the concept of ``defective'' was  different in CS and SE.
+Specifically, off-the-shelf defect labeling technologies (that are widely used  in SE \cite{tu2019better,mockus00changeskeys,kamei12_jit, hindle08_largecommits, Kim08changes}),
 performed poorly when applied to CS projects.
 To fix that, they built an automatic assistant called EMBLEM that showed a subject matter expert 
 examples of supposedly defective CS code (as identified by the off-the-shelf SE tool).
@@ -859,19 +841,18 @@ Using feedback from the subject matter expert, the automatic assistant adjusted 
 
 Table~\ref{tbl:rq2aaa} 
 compares defect predictions generated by a data
-miner using defect labels from (a)~an  off-the-shelf SE defect method;
-and (b)~those generated via EMBLEM. 
-Given $N$ releases per project, or the standard SE defect labeler.
-Using data mining, two predictors were learned from release $i$ then tested on release $i+1$:
+miner using defect labels from (a)~an off-the-shelf SE defect method;
+and (b)~those generated via EMBLEM. The gray high-lighted ones are additionally added as a precaution step to check the validity of their work. 
+Given $N$ releases per project and using data mining, two predictors were learned from release $i$ then tested on release $i+1$:
 \bi
 \item
-One predictor was built using defects were identified  via EMBLEM;
+One predictor was built using defects identified  via EMBLEM;
 \item
 The other predictor was built using defects identified by the standard SE defect labeler.
 \ei
 
 
-Note that, in Table~\ref{tbl:rq2aaa}  EMBLEM's predictors usually out-performed the other method.
+Note that, in most cases in  Table~\ref{tbl:rq2aaa},  EMBLEM's predictors usually out-performed the off-the-shelf SE method. 
 That is, for CS projects,
 better results were obtained after adjusting the meaning of a standard term (``defect'')
 taken from SE.
@@ -913,7 +894,7 @@ a shared understanding of that code is difficult.
   \makebox[#1]{\leaders\hbox{--}\hfill\kern0pt}%
 }
 
-\newcommand{\RULEE}[1]{\textcolor{black!20}{\rule{#1}{6}}}
+\newcommand{\RULEE}[1]{\textcolor{black!20}{\rule{#1}{6pt}}}
 \begin{table}[!t]
 \caption{Given $N$ releases of software, this chart shows the percent of releases
 where off-the-shelf SE defect predictor is defeated by the
@@ -985,15 +966,12 @@ shows those results. Each x-axis of that figure is one project so the hero and n
 at any particular x-value.
 In those results, we observe that:
 \bi
-\item In SE projects, nearly half the commits made by non-heroes introduce new defects.
-\item CS non-heroes introduce defects at much lower probability than in SE projects. In CS projects, in only  2/59 CS projects do non-heroes always introduce new defects with each commit (almost 1/3 for SE projects).
-\item In SE projects, commits by non-heroes are far more likely than heroes to introduce new defects than in CS projects.
-\item
-In CS projects, commits by non-heroes introduce new defects
-at nearly the same ration as heroes.
+\item In CS projects, only 2/59 CS projects do non-heroes always introduce new defects with each commit (almost 1/3 for SE projects).
+\item In SE projects, non-heroes's commits are far more likely (30\%-90\% for 25th-75th percentiles) than heroes to introduce new defects.
+\item In CS projects, commits by non-heroes introduce new defects at nearly the same ratio as heroes (actually, 2\%-6\% less than for 25th-75th percentiles).
 \ei
  
-Hence, we say:
+CS non-heroes introduce defects at much lower probability than in SE projects. Hence, we say:
 
 \begin{RQ}
 \textit{\underline{Conclusion:}} Measured in terms
@@ -1132,7 +1110,7 @@ Further, the above ratios may miss certain important code measures
 (e.g. text-based, token-based, tree-based, metric-based, semantic and hybrid).
 
 We did not explore those additional measures of reuse since
-their implementation leads to antheir comparison n lead to $O(n^{(m-1)})$ complexity with $n$ as the current section of codes within the project and $m$ is the number of the projects to compare to. We hence leave reuse measurement in CS to  future work.
+their implementation leads to $O(n^{(m-1)})$ complexity with $n$ as the current section of codes within the project and $m$ is the number of the projects to compare to. We hence leave reuse measurement in CS to  future work.
 
 \subsection{Low Perceived Value} ~\\
 \noindent \textit{\underline{Belief:}} 
@@ -1241,7 +1219,7 @@ This means that CS projects are over three times more likely to be {\em sane}:
 \begin{figure}
   \centering
   \includegraphics[width=\linewidth]{img/sanity.png} 
-  \caption{ SE and Computational Science  projects : counting number of before and after sanity checks.}
+  \caption{Count of the numbers of SE and CS projects  before and after sanity checks.}
   \label{fig:sanity}
 \end{figure}
  Also, recalling Figure \ref{fig:belief1} CS developers are observed to have a near-constant growth rate in their number of enhancements across their entire lifecycle. This observation is consistent with CS developers using
@@ -1280,7 +1258,7 @@ Thirdly, recalling the discussion about lack of requirements in \S\ref{rments}, 
 
 As to other parts of the development lifecycle,  recalling the discussion about verification and validation in \S\ref{vv}, CS would most benefit from a different kind of testing device. Standard SE is to divide testing into the unit and system testing. \S\ref{vv} says there is a third layer of testing that we might call science testing. CS debug tools need to be augmented with (e.g.)  physical knowledge that can detect violations of physical properties.
 
-Apart from requirements and testing, another major part of the software lifecycle is development and operations. These are two areas that seem to offer the most benefit for new research. For example, many CS projects are ``glue'' codes that allow other people to run their experimental application code on some complex platform (with one of the benefit being accessible to other tools within the research community). When that code crashes, it is a triage problem to decide which team needs to fix the code (the ``glue'' developers or the application developers). This is one example of the kind of operational support that would be beneficial to explore. Clearly, there are many more possibilities in this exciting area.
+Apart from requirements and testing, another major part of the software lifecycle is development and operations. These are two areas that seem to offer the most benefit for new research. For example, many CS projects are ``glue'' codes that allow other people to run their experimental application code on some complex platform (with one of the benefit being accessible to other tools within the research community). When that code crashes, it is a triage problem to decide which team needs to fix the code (the ``glue'' developers or the application developers). This is one example of the kind of operational support that would be beneficial to explore. Clearly, there are many more possibilities in this exciting area. In fact, the three beliefs that we did not get to investigate, mentioned in \S2.4, in this study will be our future work in action right away. 
 
 
 
