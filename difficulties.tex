@@ -26,7 +26,7 @@
 % \end{tabular}}
 % & \cite{segal08_ss, carver07_environment, segal05_ss, basili08_hpc, easterbrook_cs} & No Evidence \\
 % & & \cite{carver07_environment, kanewala13_testing, carver06_hpc, Prabhu11_cssurvey, basili08_hpc} & \ENDORSE  \\
-% & & \cite{easterbrook_cs, segal07_problem, carver07_environment, segal08_ss} & No-Evidence \\ \hline
+% & & \cite{easterbrook_cs, segal_enduser, carver07_environment, segal08_ss} & No-Evidence \\ \hline
 
 % \multirow{4}{*}{\begin{tabular}[l]{@{}c@{}c@{}c@{}} 2. limitations \\ of computer \\ hardware \end{tabular}}  &  \multirow{4}{*}{\begin{tabular}[c]{@{}l@{}l@{}l@{}} a) Development is Driven and Limited by Hardware & 
 %  \\ b) Use of ``Old'' Programming Languages and Technologies 
@@ -46,11 +46,11 @@
 %  \\ f) Disregard of Most Modern Software Engineering Methods 
 % \end{tabular}} 
 %  &  \cite{faulk09_secs, easterbrook_cs, boyle09_lessons} & \ENDORSE \\
-%  & & \cite{segal07_problem, carver06_hpc, Shull05_parallel, sanders08_risk} & \DOUBT \\
-%  & & \cite{Prabhu11_cssurvey, segal07_problem, basili08_hpc, carver06_hpc} & \DOUBT \\
-%  & & \cite{faulk09_secs, segal07_enduser, easterbrook_cs, boyle09_lessons} & \DOUBT \\
-%  & & \cite{segal07_enduser, basili08_hpc, carver13_perception, easterbrook_cs, sanders08_risk} & \DOUBT \\ 
-%  & & \cite{segal07_enduser, sanders08_risk} & \DOUBT \\ 
+%  & & \cite{segal_enduser, carver06_hpc, Shull05_parallel, sanders08_risk} & \DOUBT \\
+%  & & \cite{Prabhu11_cssurvey, segal_enduser, basili08_hpc, carver06_hpc} & \DOUBT \\
+%  & & \cite{faulk09_secs, segal_enduser, easterbrook_cs, boyle09_lessons} & \DOUBT \\
+%  & & \cite{segal_enduser, basili08_hpc, carver13_perception, easterbrook_cs, sanders08_risk} & \DOUBT \\ 
+%  & & \cite{segal_enduser, sanders08_risk} & \DOUBT \\ 
 % \end{tabular}}
 % \label{tab:characteristics}
 % \vspace{-5pt}
@@ -65,6 +65,7 @@
 \newcommand{\ENDORSE}{\colorbox{celadon}{{\bf Endorse}}}
 
 \begin{table*}[t]
+\vspace{-15pt}
 \centering
 \caption{Thirteen beliefs from
 prior studies about Computational Science. From Johanson et al. \cite{johan18_secs}. These beliefs
@@ -79,30 +80,30 @@ not check using our Github data.}
 \begin{tabular}{c|l|l|c}
 Category  & Characteristics & Citations & Conclusion \\ \hline
 
-\multirow{4}{*}{\begin{tabular}[l]{@{}c@{}c@{}c@{}} 1. limitations \\ of computer \\ hardware \end{tabular}}  &  
-a) Development is Driven and Limited by Hardware &  \cite{easterbrook_cs, faulk09_secs} & No Evidence 
- \\ & b) Use of ``Old'' Programming Languages and Technologies & \cite{basili08_hpc, carver07_environment, Prabhu11_cssurvey, kendall05_C, ragan14_pythoncs} & \DOUBT 
- \\ & c) Intermingling of Domain Logic and Implementation Details & \cite{faulk09_secs} & \ENDORSE  
- \\ & d) Conflicting Software Quality Requirements & \cite{carver07_environment, basili08_hpc, carver06_hpc} & No Evidence \\ \hline
+\multirow{4}{*}{\begin{tabular}[l]{@{}c@{}c@{}c@{}} A. limitations \\ of computer \\ hardware \end{tabular}}  &  
+1) Use of ``Old'' Programming Languages and Technologies & \cite{basili08_hpc, carver07_environment, Prabhu11_cssurvey, kendall05_C, ragan14_pythoncs} & \DOUBT 
+ \\ & 2) Intermingling of Domain Logic and Implementation Details & \cite{faulk09_secs} & \ENDORSE  
+ \\ & 3) Development is Driven and Limited by Hardware &  \cite{easterbrook_cs, faulk09_secs} & No-Evidence 
+ \\ & 4) Conflicting Software Quality Requirements & \cite{carver07_environment, basili08_hpc, carver06_hpc} & No-Evidence \\ \hline
 
-\multirow{3}{*}{\begin{tabular}[l]{@{}c@{}c@{}} 2. nature of \\ scientific  \\ challenge\end{tabular}}  &  
-a) Requirements are Not Known up Front & \cite{segal08_ss, carver07_environment, segal05_ss, basili08_hpc, easterbrook_cs} & No Evidence
+\multirow{3}{*}{\begin{tabular}[l]{@{}c@{}c@{}} B. nature of \\ scientific  \\ challenge\end{tabular}}  &  1) Verification and Validation are Difficult and Strictly Scientific &  \cite{carver07_environment, kanewala13_testing, carver06_hpc, Prabhu11_cssurvey, basili08_hpc} & No-Evidence/\ENDORSE
  \\ 
-& b) Verification and Validation are Difficult and Strictly Scientific &  \cite{carver07_environment, kanewala13_testing, carver06_hpc, Prabhu11_cssurvey, basili08_hpc} & \ENDORSE
+& 2) Requirements are Not Known up Front & \cite{segal08_ss, carver07_environment, segal05_ss, basili08_hpc, easterbrook_cs} & No-Evidence
  \\ 
-& c) Overly Formal Software Processes Restrict Research & \cite{easterbrook_cs, segal07_problem, carver07_environment, segal08_ss} & No-Evidence \\ \hline
+& 3) Overly Formal Software Processes Restrict Research & \cite{easterbrook_cs, segal_enduser, carver07_environment, segal08_ss} & No-Evidence \\ \hline
 
-\multirow{7}{*}{\begin{tabular}[l]{@{}c@{}c@{}c@{}c@{}c@{}} 3. limitations \\ of cultural \\ differences \end{tabular}}  &  
-a) Different Terminology &  \cite{faulk09_secs, easterbrook_cs, boyle09_lessons} & \ENDORSE 
- \\ & b) Disregard of Most Modern Software Engineering Methods & \cite{carver13_perception, hannay09_secs, Prabhu11_cssurvey} & \DOUBT 
- \\& c) Creating a Shared Understanding of a ``Code'' is Difficult & \cite{segal07_problem, carver06_hpc, Shull05_parallel, sanders08_risk} & \DOUBT 
- \\& d) Little Code Reuse & \cite{Prabhu11_cssurvey, segal07_problem, basili08_hpc, carver06_hpc} & \DOUBT 
- \\& e) Scientific Software in Itself has No Value But Still It is Long-Lived & \cite{faulk09_secs, segal07_enduser, easterbrook_cs, boyle09_lessons} & \DOUBT 
- \\ & f) Few Scientists are Trained in Software Engineering & \cite{segal07_enduser, basili08_hpc, carver13_perception, easterbrook_cs, sanders08_risk} & \DOUBT 
+\multirow{7}{*}{\begin{tabular}[l]{@{}c@{}c@{}c@{}c@{}c@{}} C. limitations \\ of cultural \\ differences \end{tabular}}  &  
+1) Different Terminology &  \cite{faulk09_secs, easterbrook_cs, boyle09_lessons} & \ENDORSE 
+ 
+ \\& 2) Creating a Shared Understanding of a ``Code'' is Difficult & \cite{segal_enduser, carver06_hpc, Shull05_parallel, sanders08_risk} & \DOUBT 
+ \\& 3) Little Code Reuse & \cite{Prabhu11_cssurvey, segal_enduser, basili08_hpc, carver06_hpc} & No-Evidence/\DOUBT 
+ \\& 4) Scientific Software in Itself has No Value But Still It is Long-Lived & \cite{faulk09_secs, segal_enduser, easterbrook_cs, boyle09_lessons} & \DOUBT 
+ \\ & 5) Few Scientists are Trained in Software Engineering & \cite{segal_enduser, basili08_hpc, carver13_perception, easterbrook_cs, sanders08_risk} & \DOUBT 
+ \\ & 6) Disregard of Most Modern Software Engineering Methods & \cite{carver13_perception, hannay09_secs, Prabhu11_cssurvey} & \DOUBT 
  
 
  
 \end{tabular}}
 \label{tab:characteristics}
-\vspace{-5pt}
+\vspace{-15pt}
 \end{table*}

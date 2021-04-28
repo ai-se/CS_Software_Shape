@@ -1,0 +1,1420 @@
+\pdfoutput=1
+
+\documentclass[conference,10pt]{IEEEtran} 
+
+\IEEEoverridecommandlockouts
+
+%\usepackage{draftwatermark}
+%\SetWatermarkText{Draft}
+\usepackage{balance}
+\setcounter{tocdepth}{3}
+%\usepackage{cite}
+\usepackage{cite}
+\usepackage[numbers]{natbib}
+
+\usepackage{graphicx}
+%\usepackage{showframe}
+\usepackage{enumitem}
+\usepackage[skins]{tcolorbox}
+\usepackage{dblfloatfix}  
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{times}
+%\usepackage[dvipsnames]{xcolor}
+\usepackage{rotating}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usetikzlibrary{angles}
+\usepackage{makecell}
+\usepackage{tabu}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{framed} 
+\usepackage{newtxtext,newtxmath,amsmath}
+\usepackage{cleveref}
+
+\usepackage[framemethod=tikz]{mdframed}
+\usetikzlibrary{shadows}
+\usepackage{graphics}
+\newmdenv[
+tikzsetting= {fill=gray!10},
+linewidth=1pt,
+roundcorner=2pt,
+shadow=false
+]{myshadowbox}
+%\usepackage[framed]{ntheorem}
+
+\newcommand{\bluecheck}{}%
+\DeclareRobustCommand{\greencheck}{%
+  \tikz\fill[scale=0.25, color=green]
+  (0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;%
+}
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\newenvironment{result}[2]
+{\begin{myshadowbox}\textbf{\textit{\underline{Lesson#1:}}} #2}{
+\end{myshadowbox}}
+
+\makeatletter
+\let\th@plain\relax
+\makeatother
+
+\hypersetup{
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\newcommand{\tikzhighlightanchor}[1]{\ensuremath{\vcenter{\hbox{\tikz[remember picture, overlay]{\coordinate (#1 highlight \arabic{highlight});}}}}}
+
+\setlist[itemize]{leftmargin=0.4cm}
+\setlist[enumerate]{leftmargin=0.4cm}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\fig}[1]{\Cref{fig:#1}}
+\newcommand{\eq}[1]{Equation~\ref{eq:#1}}
+\newcommand{\tion}[1]{\S\ref{sect:#1}}
+
+\newenvironment{RQ}{\vspace{1mm}\begin{tcolorbox}[enhanced,width=3.4in,size=fbox,colback=red!5!white,drop shadow southeast,sharp corners]}{\end{tcolorbox}}
+
+\usepackage{url}
+%\newcommand{\keywords}[1]{\par\addvspace\baselineskip \noindent\keywordname\enspace\ignorespaces#1}
+%%% graph
+\newcommand{\crule}[3][darkgray]{\textcolor{#1}{\rule{#2}{#3}}}
+
+\tikzstyle{thmbox} = [rectangle, rounded corners, draw=black, fill=gray!10]
+\newcommand\thmbox[1]{%
+	\noindent\begin{tikzpicture}%
+	\node [thmbox] (box){%
+		\begin{minipage}{.94\textwidth}%
+		\vspace{-0.1cm}#1\vspace{-0.1cm}%
+		\end{minipage}%
+	};%
+	\end{tikzpicture}}
+
+\newcommand{\quartex}[4]{
+\begin{picture}(25,6)%1
+    {
+        \color{black}
+        \put(#3,3)
+        {\circle*{4}}
+        \put(#1,3)
+        {\line(1,0){#2}}
+    }
+\end{picture}
+}
+
+
+\begin{document}
+% \title{What Do  We (Really) Know \\About Scientific Software?}
+\title{The Changing Nature of the Scientific Software \vspace{-5pt}}
+\author{\IEEEauthorblockN{Blinded for review} \vspace{-15pt}}
+
+
+% \author{\IEEEauthorblockN{Huy Tu}
+% \IEEEauthorblockA{NC State University\\Raleigh, USA\\hqtu@ncsu.edu}
+% \and
+% \IEEEauthorblockN{Rishabh Agrawal}
+% \IEEEauthorblockA{NC State University\\Raleigh, USA\\ragrawa3@ncsu.edu}
+% \and
+% \IEEEauthorblockN{Tim Menzies}
+% \IEEEauthorblockA{NC State University\\Raleigh, USA\\timm@ieee.org}
+% }
+
+
+
+% The paper headers
+\markboth{IEEE Mining Software Repositories Conference}%
+{Tu \MakeLowercase{\textit{et al.}}: Changing Nature of Scientific Software for IEEE Journals}
+
+\maketitle
+\thispagestyle{plain}
+\pagestyle{plain}
+\IEEEpeerreviewmaketitle
+
+% make the title area
+\begin{abstract}
+
+How should software engineering be adapted for Computational Science (CSc)? If we can answer this question, then we could better support software sustainability, verifiability, reproducibility, comprehension, and usability for CSc community. For example, improving the maintainability of CSc code could lead to: (a) faster adaptation of scientific project simulations to new and efficient hardware (multi-core and heterogeneous systems); (b) better support  for larger teams to co-ordinate (through integration with interdisciplinary teams); and (c) an extended capability to  model complex phenomena. 
+
+In order to better understand computational science, this paper uses quantitative evidence from 59 CSc projects in Github to assess 13 published beliefs about CSc. These beliefs are the results of the limitations of computer hardware, the nature of scientific challenges, and the cultural environment of scientific software development. We found that when using this new data from Github, only a minority of those older beliefs can be endorsed. More than half of the pre-existing beliefs are dubious, which leads us to conclude that the nature of scientific software development is changing. 
+
+This result has several implications on what kinds of tools we would propose to better support computational science and future research directions for both SE and CSc communities.
+
+\end{abstract}
+
+\begin{IEEEkeywords}
+Beliefs, Mining Software Repositories, Computational Science, Empirical Software Engineering
+\end{IEEEkeywords}
+
+
+
+%
+%
+\vspace{-8pt}
+\section{Introduction}
+  
+
+The Computational Science (CSc)
+field studies and develops software to explore
+ astronomy, astrophysics, quantum chemistry, economics, genomics, molecular biology, oceanography, physics, political science,  and many other  engineering fields. 
+There is an increasing reliance on computational software for science. For instance, a Nobel Prize in 2013 went to computational chemists using computer models to explore chemical reactions during photosynthesis. In the press release of the award, the Nobel Prize committee wrote: \vspace{-2pt}
+
+\begin{quote}
+\centering {\em Today the computer is just as important a tool for chemists as the test tube~\cite{nobel_2013}.}
+\end{quote}
+
+% Instead of manually exploring the physical effects they represent, 
+
+Computational scientists utilize software models to explore physical effects because they are done in real-time in a precise, fast, cheap, and safe manner~\cite{heaton15_lit}. For instance, in material science, CSc explores the properties
+of new materials by synthesizing them. Manual experimentation is very expensive so they %standard practice is to 
+use software to determine
+those properties (via a finite element analysis~\cite{fea_01}). This, in turn, enables the faster transition of new materials to industry. Moreover, scientific software has important and widespread impact on our society. In weather forecasting, CSc
+software can estimate hurricane paths to better inform and protect affected homeowners. Recently, biologists urgently study host-coronavirus interaction and protective immune mechanism through software (i.e., simulation and prediction of COVID-19 protein candidates) for rapid vaccine development to combat the global pandemic~\cite{covid}. 
+
+%From these examples, there are multiple good reasons for increasing reliance on computational methods software for science such as it is real-time, more precise, faster, cheaper, and safer to explore software models than manually explore the physical effects they represent. For instance, CSc software can explore the effects of several 
+%hurricanes 
+%scenarios and nuclear reactions without risk to human life
+%or property~\cite{heaton15_lit}.
+
+There is much demand for better software engineering (SE) methods
+for CSc. For example, an investigation of the 
+quality of scientific software during the ``Climategate'' scandal~\cite{merali10_error} found little to no reproducible results. Recent high-profile retractions, technical comments, and corrections
+due to software errors include papers in \textit{Science}~\cite{Chang1875_science, comments_science}, the \textit{Journal of Molecular Biology}~\cite{Geoffrey_JMB}, \textit{Ecology Letters}~\cite{lee_ecolet, david_ecolet}, etc. Improving the verifiability and maintenance of CSc software would ensure the credibility of CSc results and implications.~\Cref{tab:characteristics}
+lists many of the prior conclusions
+where empirical software
+engineering researchers have explored computational science  based on the work of
+Carver, Heaton, Basili, and Johanson~\cite{carver13_perception, carver07_environment, basili08_hpc, heaton15_lit, johan18_secs}, and others.
+Johanson et al.~\cite{johan18_secs}   argue that SE practices will only be integrated into CSc community when
+those practices take full advantage of
+the   thirthteen beliefs  in~\Cref{tab:characteristics}. 
+ 
+
+\input{difficulties.tex}
+
+There are numerous examples of long-held beliefs which, when re-evaluated, are proved to be incomplete or outdated~\cite{menzies17,dev16}. In other words, just because  prior research endorsed
+ belief ``X'' does not mean that ``X'' is relevant in the current context. Given this reality, and the prominence of 
+computational science, it is 
+well past time for re-assessing the beliefs in~\Cref{tab:characteristics}. 
+
+A recent trend is that CSc researchers store their code on Github, a platform to host open source repositories such as  \cite{kendall05_C, BangerthHartmannKanschat2007, lammps-sandia, deelman-fgcs-2015}.
+We conducted a study assessing the thirthteen beliefs by mining the code and comments of dozens of the repositories of  those CSc projects. Four of those beliefs cannot be explored using Github data. For the remaining:
+\bi
+\item Assuming each belief held,
+we described what effect we would expect to see in project data,
+\item Then, we check if that effect actually exists in the data.
+If so,\hspace{-1pt} we \textbf{endorse} that belief.~Else,~we have cause to  \textbf{doubt}~it. 
+\ei
+
+Based on the analysis of 59 CSc projects as proxies for CSc software, our findings and contributions include: 
+\be
+\item Contrary to prior research, only a small number of proposed beliefs in~\cite{johan18_secs} are endorsed. We present implications of this result on research practices and tools to better support CSc. 
+\item The relevance of the scientific software development beliefs may change according to time.
+In this regard, it is appropriate to note that
+  much of the prior analysis that leads to~\Cref{tab:characteristics} was qualitative in nature (i.e., difficult to reproduce, check, or refute because of interpretation). This work, on the other hand, is quantitative in nature. Hence, it can be reproduced, improved, or even refuted.  To assist in that process, we have posted all our data and scripts at
+\url{https://github.com/msr2021/se4cs}. 
+\ee
+
+%The rest of this paper is structured as follows. The next section offers some preliminary notes on the data we collected with our methods for labelling and analyzing that data. Then \S3 discusses the general threats to validity of our work. \S4-6 provide background, analysis results for much evidence of the changing nature of computational science software. \S7-8 conclude and offer future directions of SE for CSc research. 
+
+% Orior researchers 
+% There have been definite efforts in employing these modern SE practices - which was proven to improve the traditional software - for the CS field. This hopefully would be of great assistant to the computational scientists in the fields such as molecular dynamics, quantum chemistry, and computational materials. However, there have not been large scale empirical study and results indicating the validity of these improvement observations while recommending actionable changes for these observations to hold in the scientific context.       
+
+% It is important first to identify and understand how scientific software development differentiates from Software Engineering (hereafter, SE) development. Faulk et al. and Hannay et al.~\cite{hannay09_secs, faulk09_secs} note that a ``wide chasm'' of how these two fields are speaking a common language, yet ``separated'' by upholding to a different cultures and values:
+% \bi
+% \item
+% Software development practice has aimed for generality of ``all things applied'' perplexing computational scientists focusing on ``domain specific''. 
+
+
+% It is inevitable that the two fields must not continue existing in isolation. However, the gap bridging progress of modern SE practices in computational science has remained status quo through 13 recurring underlying causes results from the nature of scientific challenges, from limitations of computers, and from the cultural environment of scientific software development that developed and restated through this past decade by Carver, Heaton, Basili, and Johanson~\cite{carver13_perception, carver07_environment, basili08_hpc, heaton15_lit, johan18_secs}. Johanson et al.~\cite{johan18_secs} specifically claims that SE practices will only be integrated if they honored the mentioned 13 characteristics and constraints of scientific software development mentioned in the~\Cref{tab:characteristics}.
+% Traditional SE environments such as businesses or IT companies have used SE practices, it is puzzling of how the scientific software developers not using them or not using them effectively. Throughout literatures, there have not been a quantitative study of these 13 characteristics and constraints in order to give a more empirical view of the scientific software development practices in comparison with the traditional SE practices. 
+
+ 
+ 
+
+\section{Preliminary} 
+
+This section introduces the general method to assess the beliefs through labelling and analyzing the data. Then, it offers some preparatory notes from the collected data.
+
+%The growing dependency of science on computational methods software to make decisions for scientists is inevitable. By enhancing the software's quality, scientists can guarantee the CS work more credible and more productive. Therefore, 
+%better SE improves computational
+%science software, which would lead to better (e.g.,) weather prediction and the faster creation of new industries based on new materials.
+
+\subsection{Modeling Assumptions and ``Indicators''}\label{model}
+
+The reasoning of this 
+paper makes
+modeling assumptions to bridge the gap between the higher-level concept of the belief to what is measurable through the Github data. For example, consider the belief B.1)  in ~\Cref{tab:characteristics}, ``Verification and validation in software development for CSc are difficult''.  
+Having read 10,000 commits messages, we can assert that 
+less than 1\% commits are labeled  ``verification and validation'' (V\&V) and, of those that are,
+even less use these terms in a consistent manner. Instead, based on our reading of the commits, we could assign labels showing whether or not developers were reporting the results of creating/running tests. Hence, to explore that belief we had to make the following modeling assumptions to bridge between the terminology of the belief and the terms in the Github data: (1) V\&V is associated with testing; (2) the amount of testing is an indicator for V\&V efforts; and (3) the amount of failed tests indicating how rigorous the software is being validated and verified. This modeling assumption that relies on commits to indicate the amount of developers effort in a specific task has been used by other SE researchers~\cite{vasilescu16_limit, xia2019sequential}. In order to materialize and fathom the belief's context, it is imperative to have an established standard to benchmark CSc results, in which SE is an ideal candidate. For instance, to understand the difficulty of CSc's V\&V, we measured the indicators based on (1)-(3) in both CSc and SE projects and compared them.
+
+Formally, this means that our conclusions are based on what~\citet{schouten2010indicators} describe as
+ {\em indicators} rather than direct measures. Indicator-based reasoning is often used as a method to take steps closer to intangible, abstract, or expensive problems. For example,
+ in statistics, Schouten relied on indicators to support large survey data collection monitoring~\cite{schouten2010indicators}. In SE, van Lamsweerde used indicators to evaluate the degree of fulfillment of goals~\cite{vanLamsweerde2009_requirement}.
+ Further, in business 
+ management, a highly cited study by Kaplan et al.~\cite{kaplan1996using} offered a four-layer ``perspectives diagram'' that bridges high-level and intangible business goals down
+ to observable entities or \textit{indicators}.
+% \subsection{Research Questions}
+
+ 
+% There have been many claims and many studies made about how scientists develop software along with systematic reviews of the literature from both scientists and SE community about developing software. It is essential to not only survey literatures of both community but also conducting quantitative study and interviews to validate the 13 characteristics:
+
+% \begin{enumerate}
+%     \item What claims have scientists indicated within the characteristics/constraints about why state of the art SE techniques are poorly adopted by scientists?
+%     \item What empirical evidence (e.g., quantitative study of the project development or interviews) to validate or reject these claims? 
+% \end{enumerate}
+ 
+ 
+
+ 
+%{\small
+
+To collect data in order to check our beliefs on CSc projects, we combined projects associated with a specific NSF grant and from our contacts within the CSc community, i.e., the Molecular Sciences Software Institute (MOLSSI) and the Science Gateways Community Institute (SGCI) to find
+678 CSc projects. Researchers
+warn  \begin{wraptable}{r}{1.5in}
+\vspace{-15pt}
+\centering
+\caption{Data sanity checks. From~\cite{Kalliamvakou:2014}.}\label{tbl:sanity}
+\small
+\begin{tabular}{r|l}
+ Check   & Condition    \\\hline
+ \# Developers & $\geq$ 7 \\
+ Pull requests  & $>$ 0 \\
+Issues & $>$ 10 \\
+Releases &  $>$ 1 \\
+Commits & $>$ 20 \\
+Duration  & $>$ 1 year 
+\end{tabular}%}
+\vspace{-10pt}
+\end{wraptable} against using all the Github data~\cite{bird09promise,agrawal2018we, eirini15promise, munaiah17curating} since
+many of these projects are simple one-person prototypes. 
+Following  the advice, we applied the sanity checks of~\Cref{tbl:sanity}
+to select 59 projects with sufficient information. We list all of those projects outside of this paper in our online materials.\footnote{\vspace{-20pt}\url{https://github.com/msr2021/se4cs}}
+
+
+\definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}\definecolor{cadetblue}{rgb}{0.37, 0.62, 0.63}
+\begin{figure*}[!t]
+\vspace{-10pt}
+\centering \includegraphics[width=.95\linewidth, height=3in]{img/summary.png}
+\vspace{-5pt}
+\caption{Data distributions from 1037 SE projects (shown in \colorbox{cadetblue}{\textcolor{white}{lighter}}) \& 59 CSc projects (shown in \colorbox{amethyst}{\textcolor{white}{darker}}).}\label{fig:comparison}
+\vspace{-13pt}
+\end{figure*}    
+
+\subsection{Data Collection}\label{tion:data}
+
+
+% \Cref{fig:comparison} shows some statistics on the data we collected from our 59 CSc projects. 
+
+For comparison purposes, Github helps standardize environments and metrics. We compare 59 CSc projects sample to 
+a sample of 1037 Github SE projects from~\cite{Majumder19} that passed the sanity checks of~\Cref{tbl:sanity}. 
+There is no overlap between the CSc projects and the Github sample. \Cref{fig:comparison} shows some statistics on two samples, it uses the following terminology:
+
+\bi
+
+
+\item \textit{Developers}: are the active contributors to a project.
+% , who code and submit their code using commit to the code base. The number of developers signifies the interest of developers in actively participating in the project and volume of the work.
+  
+  
+
+\item \textit{Commits:} adds the latest source code to the repository.
+% in version control systems, a commit adds the latest changes to the source code to the repository, making these changes part of the head revision of the repository. 
+
+\item  \textit{Open \& Closed Issues:} are used to track ideas, enhancements, tasks, or bugs.
+
+% users and developers of a repository on Github use issues as a place to track ideas, enhancements, tasks, or bugs. As they work, they open issues with Github. When developers address those matters, they close the issues.
+
+\item  \textit{Tags}: are references that point to a specific time in the Git version control history. 
+%Tagging is generally used for marking version release (i.e., v1.0.1).
+
+
+\item  \textit{Releases:} are different versions published (and  signifies a considerable  change between each version)
+% mark a specific point in the repository’s history. The number of releases defines different versions published (and  signifies a considerable  change between each version).
+
+\item \textit{Duration:} marks the length of the project from its inception to the current date or project archive date (in weeks).
+%of a project marks the length of the project from its inception to the current date or project archive date (in week as a unit of time). It signifies how long a project has been running and in the active development phase.
+\item \textit{Stars:} are how many people
+  ``liked'' a project's repository enough to bookmark to get updated on its future progress.
+  
+\item   \textit{Forks}: how many people are interested in the repository to make a copy of it while  allowing users to freely experiment without affecting the original project.
+   
+   % Forking a repository allows users to freely experiment with changes without affecting the original project. 
+   % This number is an indicator of how many people are interested in the repository and actively thinking of modification of the original version.
+  
+\item   \textit{Watchers}: are Github users who have asked to be notified of activity in a repository, but have not become collaborators. 
+   % This is a representative of people actively monitoring projects, because of possible interest or dependency.
+\ei
+
+
+
+
+
+   
+  
+  The following observation  
+  will become important, later in the paper (i.e., issues of size conflation).
+Assuming that ``standard'' SE projects are those we see in Github which pass the sanity checks of~\Cref{tbl:sanity}, then
+ \Cref{fig:comparison} shows that
+  \begin{quote}
+  \centering
+  {\em It is not true that CSc projects are usually smaller than standard SE projects.}
+  \end{quote}
+ To justify this statement, we applied 
+  a 95\% confidence bootstrap statistical test~\cite{efron94} and an A12 effect size test~\cite{arcuri2011practical}, to all the~\Cref{fig:comparison} distributions where the median CSc values were \textit{higher} than the median SE values.
+Only in the case of {\em duration}, the CSc median were statistically different and less than the SE medians. All the other indicators show that CSc projects are just as active (or even more active) than SE projects. 
+
+The one clear negative result for CSc projects of \Cref{fig:comparison} is that their {\em duration} is shorter than the duration of the SE projects (281 weeks versus 409 weeks). 
+It suggests
+that the CSc developers are working
+just as hard (or even harder)
+as the SE community, {\em and does so in less time}. Short time element can be derived from the cultural nature within the CSc community with publications pressure, limited grants timeline, and short lifetime of Postdocs/Ph.D. students~\cite{johan18_secs}.  
+This insight suggests that SE has more to learn from CSc than the other way around.
+If we say that   an {\em efficient} software process is one that allows  people to work together, faster,  then 
+\Cref{fig:comparison} is saying:
+\begin{quote}
+{\em CSc software development is  more efficient than SE.}
+\end{quote} 
+
+     
+ \subsection{Labelling}\label{tion:labelling}
+ When code is shared
+within a software repository, an important event is the {\em commit messages}. These messages are the remarks developers make to document and justify some updates to the code. Code repository systems such as Github store tens of millions of these messages that serve as a rich source of information about a project within SE literature. For instance, Vasilescu et. al~\cite{vasilescu16_limit} and Menzies et. al~\cite{xia2019sequential} studied commits as an indicator for the development effort of projects.
+
+
+To understand the scientific development process, we manually categorized the commit comments seen within CSc
+software.  The co-authors first inspected a random sample of 100 commits to standardize the labelling guideline. This labelling had
+100\% agreement between the coauthors, and suggests a clear understanding of how to categorize the commits. 
+% We then assembled a team of 10 computer science graduate students. 
+To allow other researchers to reproduce this work, we set
+the following
+resource limit on our analysis.
+According to Tu et al.~\cite{tu2019better}, two humans can manually read and categorize
+and cross-check 400 commit comments per day (on average).
+Hence, for this study, for each project, we categorized 400 commits
+(selected at random). 
+All in all, our
+reviewer team spent 320 hours (in total) categorizing comments. Our  reviewers
+labeled commits using the following
+guidelines:
+
+
+%Using the power of free pizza, we assembled a team of 10 computer science  graduate students.
+
+\bi
+\item {\em Science enhancement}: any core science (e.g., an equation of Pascal triangle) that is being implemented or modified.
+\item {\em Engineering enhancement:} any other enhancements that related to code complexity (e.g., data structures \& types, I/O formats, etc).
+\item {\em Bug fixes:} Fixing software faults reported or found within the development. 
+\item {\em Testing: } evaluate the functionality of a software application (e.g., scientific calculations to output/input formats).
+\item
+{\em Other:} not core changes, e.g., renaming or formatting 
+\ei
+
+ 
+
+Each commit was labeled by two reviewers,
+neither of which had access to the other's labels. Moreover, the reviewers not only look at the commit message but also the code contribution associated with the commit (e.g., to determine if the nature of some enhancement was 
+``scientific'' or ``engineering'' in nature). The inter-rater reliability (IRR) between the two reviewers where the Cohen's $\kappa = 0.74$, which is a ``substantial agreement''~\cite{irr_kappa}. When labels disagreed, the commit was given to our most experienced reviewer who made an executive decision about what
+was the correct label. 
+
+\subsection{Beliefs We Cannot Explore (Using Github)}\label{tion:cannot}
+
+Github stores data about code and the comments seen during code reviews and pull requests. While this is useful for assessing most of the beliefs of~\Cref{tab:characteristics}, it does mean that four of the thirteen beliefs, summarized by~\citet{johan18_secs}, cannot be explored by this paper:
+
+\be
+\item {\em Project Requirements are not Known Upfront}: The project requirements documents from these scientific teams are not readily accessible through Github which is a requirement to map it to the developments.   
+\item {\em Overly Formal Software Processes Restrict Research}: CSc researchers perform many tasks,
+only one of which is developing software. For example,
+they must write grants, do presentations, travel, keep up with the fast-developing fields, etc. Hence, measuring the formality of software processes and research efforts would be outside of the scope for Github.
+
+\item {\em Development is Driven and Limited by Hardware:}
+From our Github data, the information about hardware platforms is found to be difficult to access. Hence, we cannot reason about this belief.
+\item {\em Conflicting Software Quality Requirements:} These requirements include functional correctness vs
+performance or maintainability. Specifically, performance issues conflict with maintainability since these are often achieved via hardware-specific optimizations. As with issues
+relating to hardware,
+the information rarely exists on Github. 
+\item {\em Conflicting Software Quality Requirements:} These requirements include functional correctness vs
+performance or maintainability. Specifically, performance issues conflict with maintainability since these are often achieved via hardware-specific optimizations. As with issues
+relating to hardware,
+the information rarely exists on Github. 
+\item {\em Validation and Verification (V\&V) are Difficult:}  V\&V referring to such as the physical experimentation and experimental validation. Complex distributed hardware environments  with no comparable software~\cite{basili08_hpc} which is difficult to replicate. However, standard SE can associate V\&V with testing, V\&V's efforts with the amount of testing, and V\&V's testing rigor with the amount of failed tests as Vasilescu et al. recommended then we do endorse the belief. We observe that V\&V is strictly scientific (almost twice the efforts on scientific V\&V) while testing rigorously as SE's projects. Spending more efforts with similar rigor indicates that CSc's V\&V are more difficult. This is further elaborated here and we still conclude as No-Evidence in the mean time.
+\item {\em Validation and Verification (V\&V) are Difficult:}  V\&V referring to such as the physical experimentation and experimental validation. Complex distributed hardware environments  with no comparable software~\cite{basili08_hpc} which is difficult to replicate. 
+
+\ee
+
+
+\begin{figure*}[!b]
+\vspace{-15pt}
+\begin{center}
+\resizebox{0.8\textwidth}{!}{
+ \includegraphics[width=.17\textwidth]{img/CS_commits_1.png}
+\hspace{2mm}\includegraphics[width=.19\textwidth]{img/SE_commits_1.png}}
+ 
+\end{center}
+\vspace{-17pt}
+\caption{Distribution of development within our sample of 59 CSc projects (left) and 20 top sampled SE projects (right).}
+\label{fig:SE_activities}
+\vspace{-30pt}
+\end{figure*}
+
+
+
+\section{Belief Assessments}\label{tion:result}
+
+This section offers background, modeling assumptions, and results analysis for the nine beliefs that are consequences of (A) limitations of computer hardware, (B) the nature of scientific challenges, and (C) the cultural environment of scientific software development.
+
+\subsection{Beliefs Due  to the  Limitations of Computer Hardware}
+
+
+
+
+%This section provides background, results analysis and threats to validity for each belief about the limitations of computer hardware.
+
+% of software development in
+% computational science that are due to limitations regarding available computing
+% resources and their efficient programming. 
+
+\subsubsection{Use of ``Old'' Techniques (and a Disregard for  most Modern SE Methods)}\label{lang}
+
+% This explores belief A.1 (CSc teams use ``old'' SE techniques) and, as a side effect, belief C.6 (CSc disregards most modern SE methods).
+
+\noindent \textit{\underline{Belief:}} According to Basili et al., and others~\cite{basili08_hpc, carver07_environment, Prabhu11_cssurvey, kendall05_C, ragan14_pythoncs},
+computational scientists prefer
+``older''-style programming languages and technologies (belief A.1) while disregarding most of the newer SE methods (belief C.6).
+
+\noindent \textit{\underline{Notes:}} The usual argument here is that CSc Scientists are skeptical of modern SE methods and new technologies/languages.
+This is based on several factors: 
+\begin{itemize}
+  \item A decades-long commitment with these older-style languages (Fortran \& C) on high-performance computing platforms~\cite{faulk09_secs}.
+  \item A belief that the extra features of the newer languages needlessly conflate functionality that can be more easily implemented in, e.g., one line of ``C'' macros~\cite{sanders08_risk}. 
+  \item A prejudice against the never languages or a perception that the scientists would not find then useful~\cite{Prabhu11_cssurvey}. 
+\end{itemize}
+
+
+
+\noindent \textit{\underline{Modeling Assumptions:}} 
+One indicator of using ``new'' techniques is the presence of automatic testing and deployment tools; e.g., use of the Travis CI tool that re-runs test suites whenever new code is committed to a repository. 
+
+Another indicator is the development language for the project. 
+Johanson et al.~\cite{johan18_secs} say that, in CSc, Fortran and C are examples of this ``old'' technology. The use of C++ is an interesting borderline case- Johanson et al. regard that as ``new technology'' even though it is now decades old. In the following, we will consider the C++ data as a special case.
+
+
+
+
+\noindent \textit{\underline{Prediction:}} If CSc teams are mostly focused on ``old'' technology then most of those projects would use ``old'' languages and would not use automated testing
+tools like  Travis CI.
+
+
+\begin{wraptable}{r}{1.5in}
+\vspace{-10pt}
+\caption{Languages in 59 CSc projects.  
+}\label{tbl:language}
+\vspace{-12pt}
+ \footnotesize
+%\begin{threeparttable}
+%\vspace{-10pt}
+%\resizebox{!}{0.2\linewidth}{
+%\setlength        abcolsep{10pt}
+ \hspace{-3pt}\begin{tabular}{l|c|c}
+ \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Count} & \multicolumn{1}{c}{Percent}\\
+\hline
+Other & 3 &  5\%  \\ 
+Javascript	& 2 & 3\% \\ 
+C &	3 & 5\% \\ 
+Java	& 5 & 9\% \\ 
+Fortran	& 6 & 10\% \\
+C++	& 17 & 29\% \\
+Python & 23 & 39\% 
+\end{tabular}
+\vspace{-10pt}
+%}
+%\end{threeparttable}
+\end{wraptable} \noindent\textit{\underline{Observed:}} 
+As seen in ~\Cref{tbl:language}, C and Fortran are just 15\% of our sample.
+Even if we call C++ ``old'', then the ``older'' technologies of ~\Cref{tbl:language}
+cover less than half the sample (44\%).
+As to other measures of ``new'', we found that  $43/59=73\%$
+have active
+Travis CI connections.  Hence, we say:
+
+\begin{RQ} 
+\textit{\underline{Conclusion:}} We \textbf{doubt} the belief that 
+CSc developers are skeptical of modern SE methods and new technologies/languages.
+\end{RQ}
+
+\noindent \textit{\underline{Discussion:}} This result is at odds
+with numerous papers~\cite{basili08_hpc, carver07_environment, Prabhu11_cssurvey, kendall05_C, ragan14_pythoncs}. 
+Most of the papers that endorse this view come from before the recent Silicon Valley boom. In our recent discussions with postdocs and Ph.D. students working on CSc projects,
+they were well aware of the potential salaries if they are adept at the popular tools used by contemporary agile software companies. Moreover, there is an advent of Research Software Engineers, a SE-adjacent role in research computing~\cite{RSEs_roles}, as well as the availability of low-threshold educational activities in
+research computing such as The Carpentries. Thus, it is perhaps not so surprising that we report here a widespread use of modern software techniques in CSc. \\
+ 
+
+
+\subsubsection{Domain Logic \& Implementation Details are Inseparable}\label{tion:separation}
+
+
+
+
+\noindent \textit{\underline{Belief:}} 
+According to Vanter et al.~\cite{faulk09_secs},
+CSc developers working on scientific software development do not separate high-level domain logic with
+lower-level implementation details. If true, this would somewhat restrict the ability
+of this community to develop general-purpose abstractions. This, in turn, would lead
+to productivity issues since new applications would have to modify much of the previous
+work. 
+
+
+
+\begin{figure}[!t]
+\vspace{-15pt}
+\begin{center}\includegraphics[width=\linewidth]{img/commits_belief1.png}\end{center} 
+\vspace{-10pt}
+\caption{Median percent  of total commits seen
+at 10, 20, 30, ... 100\% of 
+the time these CSc projects were
+documented in Github.
+X-axis measures time as percent of days seen in Github.
+Note
+that all commit types occur
+at a similar, and near constant,
+ rate, across the lifetime of a project.}\label{fig:belief1} 
+\vspace{-5mm} 
+\end{figure} 
+
+
+
+\noindent \textit{\underline{Notes:}} Maintainability, one of the product qualities of SE, is highly coupled with the
+use of abstraction~\cite{huang_abstraction}, i.e., the ability to step back from application-specific
+details to generate general-purpose understanding. Such abstract thinking is harder to do for developers who spend more time studying physical phenomena than writing maintainable code used to model those phenomena.
+
+
+\noindent \textit{\underline{Modeling Assumptions:}} During CSc software development,
+\bi
+\item Domain logic addresses computational modeling which prioritizes scientific enhancement activities. 
+\item Implementation detail addresses coding/building tools which prioritizes engineering enhancement activities. 
+\ei
+
+The level of correlation between these two activities type can be shown in (1) frequencies and (2) the amount of shared artifacts. For shared artifacts, we relied on shared source code files (not documentation or binary files) that were maintained by both activities and the commits that update those files in the repository. 
+
+\noindent \textit{\underline{Prediction:}} If domain logic and implementation details are intermingled during the development of scientific software, then both scientific and engineering enhancement contribution (as distinguished in~\Cref{tion:labelling}) should occur at similar frequencies and the artifacts shared are considerably high.
+
+\noindent \textit{\underline{Observed:}} Specifically, this belief analysis can only be completed within CSc projects as scientific activities are not typical for SE projects. Across the enhancement type commits from the sample (from~\Cref{fig:SE_activities}), 25\% of the enhancement commits focus on the core science while 27\% of the enhancement commits focus on the code quality. The absolute difference between the two types of enhancement activities is small (2\%). Moreover, from~\Cref{fig:belief1}, the rate of commits of engineering (red) and scientific (yellow) enhancement activities are observed to grow synchronously across the project lifetime. 
+
+If both activities occur synchronously while working on the same artifacts, then CSc developers cannot perform one type of activity without performing the other. With regard to shared artifacts, the amount of relevant overlapped code files (not documentation or binary) and the commits that maintain those files are documented. The majority of projects would need below or above a certain $M$ threshold to make a conclusion. Let $M = 25\%$, $33\%$, or $50\%$,~\Cref{tbl:separation} shows that in most case of $M$, the majority of projects are above $M$.
+
+\begin{RQ}
+\textit{\underline{Conclusion:}} With supportive indicators from concurring frequencies and shared artifacts,  
+we \textbf{endorse} that CSc developers intertwine domain logic and implementation details in their projects.
+\end{RQ}
+
+\begin{table}[!t]
+\vspace{-10pt}
+\centering
+\caption{Given $N$ numbers of projects, the percentage of projects having overlapping percentage above a certain threshold (25\%, 33\%, 50\%) are reported for both Scientific and Engineering development.}\label{tbl:separation}
+\footnotesize
+\resizebox{\linewidth}{!}{
+\begin{tabular}{c|c|c|c|c}
+\multicolumn{1}{c|}{Overlapping} & \multicolumn{1}{c|}{Development} & \multicolumn{1}{c|}{\% of Projects}& \multicolumn{1}{c|}{\% of Projects}
+ & \multicolumn{1}{c}{\% of Projects} \\ %& \multicolumn{1}{c}{} \\
+ 
+ \multicolumn{1}{c|}{Metrics} & \multicolumn{1}{c|}{Type} & \multicolumn{1}{c|}{> 25\%}& \multicolumn{1}{c|}{> 33\%}
+ & \multicolumn{1}{c}{> 50\%} \\ %& \multicolumn{1}{c}{Median}\\
+\hline
+\multirow{2}{*}{\begin{tabular}[c]{c} 
+ File
+\end{tabular}} & 
+ Scientific & 73\% & 64\% & 55\% \\ 
+& Engineering & 55\% & 46\% &  27\% \\\hline 
+\multirow{2}{*}{\begin{tabular}[c]{c} 
+Commit
+\end{tabular}} & 
+Scientific  & 73\% & 55\% & 37\% \\ 
+& Engineering  & 91\% & 73\% & 55\% \\ 
+\end{tabular}}
+\vspace{-10pt}
+\end{table} 
+
+\noindent \textit{\underline{Discussion:}}  It is interesting to note the inverse relationship of low numbers of overlapped files for engineering enhancements, but low numbers of commits that worked on those shared files for scientific enhancements. We suspected that engineering enhancements also have particular concerns with extending the usability of the software. Such enhancements might include deploying the software in the cloud, adding a front-end interface, or setting up the environment. These can generate more distinct files leading to a lower percentage of overlapped files. Moreover, these types of activities will most likely interact with the core modeling part of the software which requires minimal file-related updates of scientific enhancement leading to a lower percentage of commits that have overlapped files.~\Cref{tbl:separation} also offers a more in-depth view on this belief: the domain logic is restricted to a smaller region of artifacts, whereas the implementation details are spread across a larger.
+
+A cultural factor to the observed effects is that for scientific developers, there is little incentive to create general-purpose abstractions beyond the goals of a research project, due to the largely fixed-term, project-specific nature in CSc~\cite{johan18_secs}.
+
+\subsection{Beliefs about the Nature of the Scientific Challenges}
+
+%This section  provides background, results analysis and threats to validity for beliefs due to the nature scientific challenges.
+
+
+% \subsection{Requirements}\label{rments}
+
+
+% Our analysis of this first belief will conclude that
+% CS code is built in an exploratory manner,
+% rather than in response to some pre-defined
+% requirements. While this first conclusion is hardly
+% surprising, it does offer a simple example
+% of how this paper uses Github
+% data to reason about CS projects.
+
+
+
+% \noindent \textit{\underline{Belief:}} According to Basili (and others), in computational science,
+% project requirements are not known up front~\cite{segal08_ss, carver07_environment, segal05_ss, basili08_hpc, easterbrook_cs}.
+% If true, then this belief means that SE methods based on 
+% static requirements (e.g. model checking) are not so valuable
+% for CS software.
+
+
+
+
+
+% \noindent \textit{\underline{Notes:}} 
+% Many authors, including Carver~\cite{carver07_environment}
+% and Easterbrook~\cite{easterbrook_cs}
+% comment that CS code is not written in order
+% to satisfy some pre-existing set of requirements.
+% Rather, it is written an exploratory fashion in order
+% to better understand some effects. 
+% This would make CS software very different to code developed using (e.g.) a waterfall model where the requirements
+% are all known at the start of the development.
+
+
+% \noindent \textit{\underline{Modeling Assumptions:}} 
+% Projects with pre-existing list of fixed requirements 
+% can be developed in a ``waterfall'' style.
+% When that style is applied,
+% requirements is followed by analysis,
+% design, code, implementation and test.
+% The observable feature of such projects
+% is that most of the testing and bug fixing
+% activity occurs {\em after} a code base
+% has been enhanced with the required
+% scientific or engineering functionality.
+
+
+
+% \noindent \textit{\underline{Prediction: }} If CS software was written in response to some pre-existing set of requirements, then
+% we would expect to see bug-fixing and testing to be a predominately end-stage activity.
+
+
+
+
+
+
+% \noindent \textit{\underline{Observed:}} 
+% As shown in \fig{belief1}, the rate
+% of commits of different types
+% is nearly constant across the project
+% lifetime. This observation is {\em not} consistent with 
+% waterfall-style projects where most of the enhancement work happens early in the lifecycle and most of the test work happens later on.
+% \vspace{-2mm}
+% \begin{RQ}
+% \textit{\underline{Conclusion:}}
+% We \textbf{endorse} the belief that, in CS, project requirements are usually not pre-defined
+% at the start of a project.
+% \end{RQ}
+ 
+
+
+\subsubsection{Verification and Validation are Difficult}\label{vv}
+\noindent \textit{\underline{Belief:}} 
+According to~\citet{carver07_environment}, and others, 
+verification and validation in software development for CSc is difficult and strictly scientific~\cite{kanewala13_testing, carver06_hpc, Prabhu11_cssurvey, basili08_hpc}.
+That is, CSc developers spend more time debugging their theories
+of physical phenomena than debugging SE related issues (system testing, continuous integration, etc).
+If this belief were true, then much of the standard SE testing
+infrastructure would need extensions before it can be applied to CSc. For example,
+while unit tests and system tests are certainly useful, CSc projects would need a separate level of tests for domain-specific testing. 
+
+\noindent \textit{\underline{Notes:}} 
+According to~\citet{carver07_environment},
+verification and validation of scientific software can be difficult for several reasons:
+\bi
+  \item Lack of suitable test oracles~\cite{kanewala13_testing}. Complex distributed hardware environments with no comparable software~\cite{basili08_hpc},
+  \item Scientists' suspicion that the problems of the software are the results of their scientific theory~\cite{faulk09_secs},
+  \item Lack of physical experimentation and experimental validation is impractical~\cite{carver07_environment}. 
+\ei
+
+\noindent\textit{\underline{Modeling Assumptions:}} 
+As stated above in \S\ref{model},
+in order to bridge between the terminology of the belief and the Github data, we assume that (1) V\&V is associated with testing; (2) the amount of testing is an indicator for V\&V efforts; and (3) the amount of failed tests indicating how rigorous the software is being validated and verified. This second assumption is shared by Vasilescu et al.~\cite{vasilescu16_limit, xia2019sequential}, where the number and proportion of commits are treated as indicators for developing efforts of the repositories. For the third assumption, we can say the amount of failed tests (FT) and failed builds (FB) in Travis CI are indicators for measuring the V\&V rigor results with respect to the efforts. We define four attributes, where higher values indicate more rigorous testing within the projects:
+
+\bi
+ \item  \textit{FB\_Ratio} = sum(FB) / all\_builds : how often do builds fail? 
+ \item  \textit{Average\_FT\_per\_FB} = sum(FT) / FB : for each failed build, what is the number of expected failed tests? 
+ \item  \textit{FT\_Ratio\_across\_FB} = sum(FT) / sum(Tests\_across\_FB) : what is the proportion of failed tests across all failed builds? 
+ \item  \textit{FT\_Ratio\_per\_FB} = median(FT\_per\_FB / Tests\_per\_FB) : for each failed build, what is the proportion of failed tests?
+\ei
+
+\noindent \textit{\underline{Prediction:}}
+Verification and validation in CSc is more
+difficult than in SE if the observed CSc efforts (2) with respect to CSc rigor (3) in this area
+is larger than in SE. To justify strictly scientific development, we should expect far more scientific
+testing than SE testing. 
+
+\begin{wraptable}{r}{1.6in}
+\vspace{-10pt}
+\caption{Distribution of testing  commits.}\label{tbl:testing}
+\vspace{-5pt}
+\footnotesize \begin{tabular}{l|c|c}
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Absolute} & \multicolumn{1}{c}{\%}\\
+\hline
+Science & 289 & 47\% \\
+SE & 146 & 24\% \\
+Other & 173 & 29\% 
+\end{tabular}
+%}
+%\end{threeparttable} 
+\vspace{-10pt}
+\end{wraptable}\noindent \textit{\underline{Observed:}}
+We used a simple approach to show that CSc software verification and validation are heavily focused on scientific issues. Among the commits that were labeled testing, we classified them based on science, SE, or other testing. The labeling guidelines are similar to the ones used for the whole development cycle mentioned in \S\ref{tion:labelling}. We achieved a ``substantial agreement'' with the IRR between the two reviewers with Cohen's 
+\mbox{$\kappa = 0.78$~\cite{irr_kappa}}.~\Cref{tbl:testing} shows that scientific testing is the largest type of commit in our labeled Testing commits sample (47\%). 
+Far less effort is spent on SE testing (only 24\%). 
+
+
+\begin{wraptable}{r}{2in}
+\scriptsize
+\centering
+\vspace{-15pt}
+\caption{Median and interquartile range (IQR) summary for three attributes portraying the testing rigor of CSc and SE projects. IQR is the delta between the 75th and 25th percentile.}
+\vspace{-5pt}
+\label{tbl:testing_travis}
+%\resizebox{1\linewidth}{!}{
+\begin{tabular}{c|c|c|c}
+\textbf{Metric} & \begin{tabular}[c]{@{}c@{}} \textbf{Project} \end{tabular} & \textbf{Median} & \textbf{IQR} \\ \hline
+\multirow{2}{*}{\begin{tabular}[l]{c} %\rotatebox[origin=c]{90}{\parbox[c]{0.7cm}{\centering IF Ratio}} 
+FB  \end{tabular}} & 
+SE & 38\% & 33\% \\ [2pt]
+Ratio & CSc & 25\% & 20\% \\ [2pt]
+\hline
+\multirow{2}{*}{\begin{tabular}[l]{c} %\rotatebox[origin=c]{90}{\parbox[c]{0.7cm}{\centering IF Ratio}} 
+FT  \end{tabular}} & 
+CSc & 20 & 27 \\ [2pt]
+per FB & SE & 11 & 19 \\ [2pt]
+\hline
+\multirow{2}{*}{\begin{tabular}[l]{c} %\rotatebox[origin=c]{90}{\parbox[c]{0.8cm}{\centering ILOC Ratio}}
+FT Ratio 
+\end{tabular}} & 
+CSc & 3\% & 2\% \\ [2pt]
+across FB & SE & 1\% & 7\% \\ [3pt]
+\hline
+\multirow{2}{*}{\begin{tabular}[l]{c} %\rotatebox[origin=c]{90}{\parbox[c]{0.8cm}{\centering FF Ratio}}
+FT Ratio \end{tabular}} & 
+CSc & 26\% & 19\% \\ [2pt]
+per FB & SE & 20\% & 27\% \\ [2pt]
+
+\end{tabular}%}
+\vspace{-10pt}
+\end{wraptable}To show that the CSc V\&V is ``as much or more difficult'' than in SE,
+recall that~\Cref{fig:SE_activities} showed that
+  15\% of the commits were associated with CSc testing, whereas 6\% were associated with SE testing. This SE data comes from a recent study~\cite{tu2019better} which randomly sampled 20 highly starred projects from Github that satisfy our sanity checks of ~\Cref{tbl:sanity}.
+Note that 15\% is 2.5 times larger than 6\%.~\Cref{tbl:testing_travis} summarizes the median and interquartile range of testing rigor for both CSc and SE projects. Across all four metrics, CSc projects are reported to test more rigorously than SE projects. However, by the statistical Scott-Knott test\footnote{
+Scott-Knott recursively divides treatments, stopping if
+a significance test or an effect size test reports that sub-divisions are
+not statistically different~\cite{mittas2013ranking, ghotra15}.
+We use a bootstrap test to check for significance differences (at the 95\% confidence level) 
+and the $\mathit{A12}$ test to check for small effects ($\mathit{A12}\ge0.6$).
+This procedure has been endorsed in the recent SE literature~\cite{mittas2013ranking,arcuri2011practical}.}, the difference in testing rigor is not distinguishable between CSc and SE. 
+This is interesting as we are aware that scientific  developers have to put 250\%  more effort into testing than SE developers, yet CSc's testing is as rigorous as SE's testing. That is to say, the nature of verification and validation is more or at much as difficult for scientific developers as it is for traditional software engineers.
+
+\begin{RQ}
+\textit{\underline{Conclusion:}}
+We \textbf{endorse} the belief that within CSc, software development's verification and validation are difficult and are mostly concerned with scientific issues.
+\end{RQ} 
+
+% \bi
+% \item CS software is written to correspond to physical phenomena, the nature of which may never change (e.g. the atomic weight of iron).
+% \item
+% the highly starred projects in Github) is written to correspond to an ever-changing ecology of platforms, tools, user expectations, and newly-arrive AI algorithms, etc.   
+% Hence, it is not surprising  SE software requires more verification and validation effort than CS software since the problem it addresses are more dynamic.
+
+\noindent\textit{\underline{Discussion:}} This result is somewhat unexpected since it runs counter to standard beliefs in the SE literature. For example, Brookes argues that unit tests and systems tests will consume half the time of any project~\cite{brooks1995mythical}. One of our conjectures is that the larger V\&V effort in CSc is due to the nature of CSc problems. CSc software is written to solve endless problems in nature  (most of which are beyond human's understanding), with  requirements that are not known upfront and the software's state is incrementally improved. CSc V\&V has to cover both scientific and engineering concerns while SE V\&V at some points would mature to only focusing on verification, especially because SE software is largely focused on products. 
+
+More intuitively, by looking at the \textit{Testing} and \textit{Bug-fixing} attributes from~\Cref{fig:SE_activities}, the bug-fixing activities from SE software development are almost three times more than CSc, which is the direct result from testing 2.5 times less than CSc. Essentially, the \textit{less} developers test, the \textit{more} bugs developers have to potentially fix. After shipping software products, SE developers are more reluctant to test the software while for CSc developers, scientific software research and development might be a continuous process as knowledge grows.
+
+Moreover, a conflating factor that might make us doubt this observation is if CSc code bases were always much smaller than the SE code bases. If that were true, then even if tasks had a larger percentage effort 
+(e.g.,~\Cref{tbl:testing}'s ``scientific testing'') then  ``relatively more'' might actually
+mean ``less'' (in absolute terms). 
+However, as discussed in \S\ref{tion:data}, our data does not show that SE projects are larger \& more active
+than CSc projects.
+
+
+% Among all the defects fixing, the scientific and engineering defects are at the same rate. Yet, the testing focuses solely on the scientific aspect, almost three times (45\%/17\%), more than engineering testing. In a sense, scientists solely believe that the software is defected due to their science understanding when transferring that to source code while overlooking the engineering aspect. Yet, it is understandable because scientists have a lot of responsibilities (read and write papers, grants, give presentations, develop scientific models, etc) so they can only focus on testing on what they good at, i.e., scientific models. It is possibly useful for the community to incorporate automated SE testing tools for CS projects. 
+
+
+
+
+
+
+%Whatever the reason, 
+%note that this result calls for a different kind of testing device in CS.  In standard SE, a ``test'' can be something as simple as a unit test (checking if, for example, that subtrees remain in sorted order after insertion).
+% But in CS, ``tests'' need to be a higher level and refer back to some core physical properties as defined
+% by scientific theory.  
+
+
+% \noindent \textit{\underline{Threats of Validity:}} CS developers are good at contributing relevant code to the system that less likely to introduce the bugs which make them more confident to spend less time on maintenance. 
+ 
+
+ 
+
+%  \subsection{Formality}~\\
+%  \noindent \textit{\underline{Claim:}} Overly Formal Software Processes Restrict Research~\cite{easterbrook_cs, segal_enduser, carver07_environment, segal08_ss}.
+
+%  \noindent \textit{\underline{Rationale:}} 
+% Scientific software development is deeply embedded into the scientific methods and research fashion where developers will find traditional software development processes with big design upfront (e.g. waterfall approach) very challenging~\cite{easterbrook_cs}. 
+% As scientific software is evolving continuously no clear-cut requirements analysis, design, or maintenance phases can be discerned~\cite{segal_enduser}. Therefore, instead of established SE processes, scientists apply an informal, nonstandard process. 
+
+ 
+% The scientists regard their informal software process as necessarily following
+% from applying the scientific method to scientific reasoning with the help of computing. The process itself has a lot of resemblances with the agile methodology. The process involved:
+%  \begin{enumerate}
+%      \item starts from a scientific problem and the necessary software or application could be required to solve
+%      \item a prototype is developed and continuously improved, guided
+% by the questions ``Does it do what I want?'' and ``Does it help solve the scientific problem at
+% hand?''
+%     \item cursory testing
+%     \item modifications till plausible outputs are achieved.
+
+%  \end{enumerate}
+
+%  \noindent \textit{\underline{Observed:}}
+
+
+
+
+
+% In this section, we discuss characteristics of software development in
+% computational science that are due to limitations regarding available computing
+% resources and their efficient programming. 
+
+
+
+
+
+\begin{figure*}[!t]
+\vspace{-25pt}
+\resizebox{1\linewidth}{!}{
+ \hspace{-2mm}
+ \includegraphics[width=0.5\linewidth, height=1.7in]{img/SE_heroes_commits.png}
+ \hspace{2mm}
+ \includegraphics[width=0.5\linewidth, height=1.7in]{img/CS_heroes_commits.png}}
+\vspace{-20pt}
+\caption{Percentage of code commits that introduce new bugs, made by hero and non-hero developers from SE (left) and CSc (right) projects.
+Each x-axis of that figure is one project. The hero and non-hero defect introduction rate (defects per commit) is the ratio of the blue to red values
+at any specific x-value.
+}\label{fig:heroes}
+\vspace{-15pt}
+\end{figure*}
+
+
+\subsection{Beliefs about the Cultural Environment Differences}
+
+%In this section, we provide background, results analysis and threats to validity for each beliefs due to the cultural environment of scientific software development.
+
+
+\subsubsection{Different Terminology}\label{terms}
+\noindent \textit{\underline{Belief:}} 
+Vanter et al.~\cite{faulk09_secs, easterbrook_cs, boyle09_lessons} express concerns
+that it is hard to translate concepts between  CSc and SE (since the fields are so different). 
+
+\noindent \textit{\underline{Notes:}} When two fields evolve along different
+lines (like SE and CSc) it is possible that the terminology of one field has important
+differences in the other field. This is worrying if those terminology differences mean that methods from one field perform poorly in the other.
+
+
+
+\newcommand{\varendash}[1][5pt]{%
+  \makebox[#1]{\leaders\hbox{--}\hfill\kern0pt}%
+}
+
+\newcommand{\RULEE}[1]{\textcolor{black!20}{\rule{#1}{6pt}}}
+\begin{table}[!t]
+\vspace{-10pt}
+\caption{Given $N$ releases of software, this chart shows the percent of releases
+where off-the-shelf SE defect predictor is defeated by the
+EMBLEM defect predictor (that learns what ``defect'' means for CSc). The highlighted ones are additionally done for this study. }
+\vspace{-5pt}
+\label{tbl:rq2aaa}
+\footnotesize
+\begin{tabular}{r|r@{~}l}
+Project & \% & wins for EMBLEM\\[0.1cm]
+
+AMBER & 33 &   \RULEE{67pt} \\ 
+
+HOOMD & 60 &  \RULEE{120pt} \\ 
+
+RMG-PY  & 60 &  \RULEE{120pt}  \\ 
+
+\cellcolor{gray!30}   SCIRUN  & 63 &   \RULEE{125pt}  \\ 
+
+ABINIT & 63 &   \RULEE{125pt}  \\ 
+
+\cellcolor{gray!30}  OMPI &  66 &   \RULEE{130pt}  \\ 
+
+LIBMESH & 72 &  \RULEE{140pt}    \\  
+
+MDANALYSIS & 72 &  \RULEE{140pt}   \\ 
+
+LAMMPS & 75 &  \RULEE{150pt}  \\
+
+\cellcolor{gray!30}   PSI4   & 80 &   \RULEE{160pt}  \\ 
+
+
+XENON & 83 &\RULEE{170pt} 
+
+
+
+
+\end{tabular}
+\vspace{-15pt}
+\end{table}
+
+
+
+\noindent \textit{\underline{Prediction:}} If the belief is held, then the off-the-shelf SE methods may perform badly of CSc projects {\em unless} they first adjust the meaning of their SE terminology.
+
+\noindent \textit{\underline{Observed:}} Tu et al.~\cite{tu2019better} found that the concept of ``defect'' was  different in CSc and SE.
+Specifically, off-the-shelf defect labeling technologies (that are widely used  in SE~\cite{tu2019better,mockus00changeskeys,kamei12_jit, hindle08_largecommits, Kim08changes}),
+performed poorly when applied to CSc projects.
+To fix that, they built an automatic assistant called EMBLEM that showed a subject matter expert 
+examples of supposedly defective CSc code (as identified by the off-the-shelf SE tool).
+Using feedback from the subject matter expert, the automatic assistant adjusted the support vectors of an SVM. In this way, the assistant could learn what ``defect'' means in CSc.
+
+~\Cref{tbl:rq2aaa} 
+compares defect predictions generated by a data
+miner using defect labels from (a)~an off-the-shelf SE defect method;
+and (b)~those generated via EMBLEM. The \textit{gray high-lighted} ones are additionally added as a precaution step to check the validity of their work. 
+Given $N$ releases per project and using data mining, two predictors were learned from release $i$ then tested on release $i+1$:
+\bi
+\item
+One predictor was built on defects identified  via EMBLEM;
+\item
+The other predictor was built on defects identified by the standard SE defect labeler.
+\ei
+
+
+Note that, in most cases in  ~\Cref{tbl:rq2aaa},  EMBLEM's predictors usually out-performed the off-the-shelf SE method. 
+That is, for CSc projects,
+better results were obtained after adjusting the meaning of a standard term (``defect'')
+taken from SE. The threats of validity of the work are discussed thoroughly in Tu et al.'s work \cite{tu2019better}. In short, 
+
+\begin{RQ}
+\textit{\underline{Conclusion:}} We \textbf{endorse} that the CSc community utilizes different terminologies when describing their work. SE tools
+may need to be examined and adjusted before being applied to CSc projects.
+\end{RQ} 
+
+% \noindent \textit{\underline{Discussion:}}  Tu et al.~\cite{tu2019better} indicated a few reasons how their work demonstrates that a different model to learn the language of CS during software development is important. In the case of labeling defective commits, they observed that over half of the commits message were (a) very short (almost three times shorter than CS ones on median) and (b) took the form of
+% ``\textit{Bug X: [type\_of\_bug] description\_of\_the\_bug-fixing\_commit}''. Moreover, bug-fixing commits from standard SE projects (79\% in median)
+% are three to four times more likely than the median values seen in the CS software (23\%). Both of these suggest that SE project are more standardized and mostly in maintenance mode. It is more convenient  and  possible  to  catch  bug-fixing activities through a few keywords (e.g. bug, fix, error, etc). Whereas, CS developed their software in a more dynamic style with a different way to describe and document their work across the development that requires adaptation of the language in order to understand scientific software development. 
+
+
+
+% Further, this result also raises attention for the current bad research fashion of reusing and applying established work without critiques. As seen, off-the-shell SE standard methods did not apply well for CS development data. The methods need to be tuned to specialize how scientific researchers develop their software. 
+
+% The characteristics that are listed in this section result from the cultural
+% environment in which scientific software development takes place. This
+% environment is shaped, for example, by the training of computational scientists
+% and the funding schemes of scientific research projects. 
+
+
+
+%\noindent \textit{\underline{Threats of Validity:}} 
+
+
+\subsubsection{Incomprehensible Code}\label{tion:codeunderstanding}
+
+\noindent \textit{\underline{Belief:}} According to
+Segal et al., and others~\cite{segal_enduser, carver06_hpc, Shull05_parallel, sanders08_risk},
+CSc projects are so complex that creating
+a shared understanding of that code is difficult. 
+
+
+\noindent \textit{\underline{Notes:}} Research scientists typically do not produce documentation for the software they implement~\cite{segal_enduser, sanders08_risk}.
+Further, there is a high personnel turnover rates in scientific software development~\cite{carver06_hpc, segal_enduser}. As a result, there is a concern that CSc software is harder to maintain. 
+
+\noindent \textit{\underline{Modeling Assumptions:}} 
+When code is hard to maintain,
+developers who do work less frequently with the code are more prone to introduce defects
+(rationale: the greater the complexity of the code, the greater the effort required to understand it).
+Hence, one measure of the complexity of understanding code
+is the difference in defect rates between core developers, also known as ``heroes''~\cite{agrawal2018we, goeminne2011evidence, torres2011analysis, robles2009evolution}, and everyone else.
+Heroes are that  20\% group of the developers who usually make 80\% (or more) of the code changes. Aside:   Majumder et al.~\cite{majumder19_heroes} found that such heroes are very common in open source projects. Their threshold for ``hero-ness'' is the 20\% of developers
+who make 80\% of the changes. 
+
+If the defect rate is much higher for non-heroes, that would
+indicate that the code is so complex that it can only
+be safely changed by those who have studied it in great detail.
+
+
+\noindent \textit{\underline{Prediction:}} If CSc code is hard to understand than SE code, we would expect that non-hero CSc programmers would
+introduce {\em more} defects into the software than non-hero SE programmers. 
+
+
+
+
+\noindent \textit{\underline{Observed:}} Majumder et al.~\cite{majumder19_heroes} checked the heroes projects for both heroes' and non-heroes' contribution of defects within software development. Those
+results can be see Figure \ref{fig:heroes} (left-hand-side). Each x-axis of that figure is one project so the hero and non-hero defect introduction rate (defects per commit) is the ratio of the blue to red numbers
+at any particular x-value.
+
+%They found that non-heroes introduced 30 to 90\% more defects per commit (25th-75th percentiles) in SE projects. 
+
+
+
+We repeated their study for our 59 CSc projects.  Figure \ref{fig:heroes} (right-hand-side)
+shows those results. 
+From our replication study results and Majumder et al.  results, we observe that:
+\bi
+\item In CSc, only 2/59 projects do non-heroes always introduce new defects with each commit (almost 1/3 SE projects).
+\item In SE projects, non-heroes' commits are far more likely (30\%-90\% for 25th-75th percentiles) than heroes to introduce new defects.
+\item In CSc projects, commits by non-heroes introduce new defects at nearly the same ratio as heroes (actually, 2\%-6\% less than for 25th-75th percentiles).
+\ei
+ 
+CSc non-heroes introduce defects at much lower probability than in SE projects. Hence, we say:
+
+\begin{RQ}
+\textit{\underline{Conclusion:}} Measured in terms
+of a number of defects introduced by each new commit, we \textbf{doubt} that the shared understanding of ``code'' is more difficult within  CSc projects than SE projects.
+\end{RQ}
+
+
+
+% \begin{table}
+% \small
+% \begin{center}
+% \caption{Percentiles seen in Figure \ref{fig:heroes}.}
+% \label{tbl:heroes}
+% \resizebox{1\linewidth}{!}{
+% \begin{tabular}{c|c|r@{~}|r@{~}|r@{~}|r@{~}|r@{~}|r@{~}}
+% & & \multicolumn{6}{c}{\textbf{Category}} \\
+% \cline{3-8}
+% &  & \multicolumn{3}{c|}{\textbf{SE Projects}} & \multicolumn{3}{c}{\textbf{CS Projects}}\\
+% \cline{3-8}
+% \textbf{Metric} & \begin{tabular}[c]{@{}c@{}} \textbf{Percentile} \end{tabular} & \begin{tabular}[c]{@{}c@{}} \textbf{Hero}\end{tabular} & \textbf{Non-Hero} & \begin{tabular}[c]{@{}c@{}} \textbf{Ratio}\end{tabular} & \textbf{Hero} & \textbf{Non-Hero} & \textbf{Ratio} \\ \hline
+
+% \multirow{3}{*}{\begin{tabular}[l]{c} \rotatebox[origin=c]{90}{\parbox[c]{1.5cm}{\centering code interaction}} \end{tabular}}  & 
+% 25th & 52 & 67 & 1.3 & 46 & 50 & 1.09  \\ [3pt]
+% & 50th & 58 & 75 & 1.3 & 52 & 52 & 1 \\ [3pt]
+% & 75th & 53 & 100 & 1.9 & 60 & 60 & 1 \\ [4pt]
+% \hline
+% \multirow{3}{*}{\begin{tabular}[l]{c} \rotatebox[origin=c]{90}{\parbox[c]{1.5cm}{\centering social interaction}} \end{tabular}}  & 
+% 25th & 52 & 67 & 1.3 & 39 & 36 & 0.92  \\[3pt] 
+% & 50th & 58 & 75 & 1.3 & 49 & 48 & 0.98 \\ [3pt]
+% & 75th & 53 & 100 & 1.9 & 61 & 57 & 0.93 \\ [3pt]
+% \end{tabular}}
+% \end{center}
+% \end{table}
+
+
+
+
+\noindent \textit{\underline{Discussion:}} 
+Cai et al.~\cite{cai19_debt} argues that the number of introduced bugs
+per commit is {\em not} a measure of code comprehension.
+In their case study, defect rates shot up after refactoring
+precisely because (a)~developers now understood the code better so (b)~they were willing to make more changes so (c)~they
+introduced more bugs. While their argument is certainly interesting, the Figure \ref{fig:heroes} (right-hand-side) results
+are not a statement of defects {\em increased} after changes.
+Rather, those results on defects ratios that are {\em the same} between two populations of programmers. \\
+
+
+\subsubsection{Little Code Reuse}\label{tion:reuse} 
+
+\noindent \textit{\underline{Belief:}} 
+Carver et al.~\cite{segal_enduser, carver06_hpc, Shull05_parallel, sanders08_risk} warn that there is little
+code reuse in CSc projects
+
+\noindent \textit{\underline{Notes:}} 
+Scientific developers have a history of not adopting or re-using the software developed by others (or even their own), e.g., linear algebra software~\cite{johan18_secs}. They 
+say this is due to:
+
+\bi
+\item The structural assumptions from the others would be too strict and narrow~\cite{carver06_hpc, basili08_hpc}.
+\item Most of the software is not built with comprehensibility requirements as the top priorities~\cite{segal_enduser} (which is doubted previously in \ref{tion:codeunderstanding}). Hence, adapting old code for new domains is difficult. 
+\item
+CSc scientists believe that their time and efforts can be conserved by being spent on implementing new libraries \& framework rather than understanding existing ones.
+\ei
+\noindent \textit{\underline{Modeling Assumptions:}} Reuse libraries here encompass reuse scientific software. To
+measure reuse, we can record the code called
+via libraries that come from outside of a repository. This is to say that the amount of external imports (EI) and files that have external imports (FEI) are indications of the reuse activities within the software. There are four attributes for this that we define below. For all of them, the higher the value the better reuse within their projects: 
+
+\bi
+\item \textit{EI\_per\_File} = EI / Total\_number\_of\_Files
+\item \textit{ILOC\_Ratio} = EI / LOC (total number lines of code)
+\item \textit{FF\_Ratio} = FEI / Total\_number\_of\_Files
+\item \textit{II\_Ratio} = EI / Total\_number\_of\_Imports 
+\ei
+
+
+\noindent\textit{\underline{Prediction:}} CSc projects have
+less reuse than SE projects if the above ratios
+are lower to CSc than SE. 
+
+
+\begin{wraptable}{r}{1.7in}
+\vspace{-10pt}
+\scriptsize
+\centering
+\caption{Median and IQR summary for four attributes portraying the reuse state of CSc and SE projects. IQR is the delta between the 75th and 25th percentile.}
+\label{tbl:reuse}
+%\resizebox{1\linewidth}{!}{
+\begin{tabular}{p{7mm}|c|c|c}
+\centering \textbf{Metric}  & \begin{tabular}[c]{@{}c@{}} \textbf{Project} \end{tabular} & \textbf{Median} & \textbf{IQR} \\ \hline
+ %\rotatebox[origin=c]{90}{\parbox[c]{0.7cm}{\centering IF Ratio}} 
+\centering EI per & 
+CSc & 3.2 & 1.6 \\ [2pt]
+\centering File & SE & 2.9 & 1.6 \\ [2pt]
+\hline
+ %\rotatebox[origin=c]{90}{\parbox[c]{0.8cm}{\centering ILOC Ratio}}
+\centering ILOC
+& 
+SE & 13\textperthousand & 9\textperthousand \\ [2pt]
+\centering Ratio & CSc & 10\textperthousand & 8\textperthousand \\ [3pt]
+\hline
+ %\rotatebox[origin=c]{90}{\parbox[c]{0.8cm}{\centering FF Ratio}}
+\centering FF  & 
+CSc & 86\% & 19\% \\ [2pt]
+ \centering Ratio & SE & 81\% & 19\% \\ [2pt]
+\hline
+ %\rotatebox[origin=c]{90}{\parbox[c]{0.7cm}{\centering II Ratio}} 
+\centering II  &  SE & 70\% & 27\%  \rule{0pt}{2.5ex} \\ [1.5pt]
+\centering Ratio & CSc & 55\% & 19\% \\ [1.5pt]
+\end{tabular}%}
+\vspace{-10pt}
+\end{wraptable} \noindent \textit{\underline{Observed:}}~\Cref{tbl:reuse} summarizes the median and interquartile range for reuse metrics in both CSc and SE projects. The lines of code reuse are low for CSc projects (just 10\%) but its nearly the same as SE projects (13\%). In fact,
+after applying a Scott-Knott test, 
+we can report that the SE projects are statistically
+indistinguishable from CSc projects, on all the metrics of~\Cref{tbl:reuse}. 
+That, in this sample, we found no difference in the reuse rates
+of SE and CSc code. Hence: 
+\begin{RQ} 
+\textit{\underline{Conclusion:}} We \textbf{doubt} that CSc reuses less code  than SE. 
+\end{RQ}
+
+\noindent \textit{\underline{Discussion:}} 
+The ratios used here only reflect code reuse.
+Other kinds of reuse include the design or conceptual reuse. 
+Also missed by the above ratios is non-verbatim reuse (where code is reused, but modified).
+Further, the above ratios may miss certain important code measures
+(e.g., text-based, token-based, tree-based, metric-based, semantic and hybrid).
+
+We did not explore those additional measures of reuse since
+their implementation leads to $O(n^{(m-1)})$ complexity with $n$ as the current section of codes within the project and $m$ is the number of the projects to compare to. We hence leave reuse measurement in CSc to  future work. \\
+
+
+
+
+\subsubsection{Low Perceived Value}\label{tion:value} 
+
+\noindent \textit{\underline{Belief:}} 
+~\citet{easterbrook_cs} comment that even though CSc codes
+may be maintained for many years,
+they are not perceived to have value within their own community~\cite{faulk09_secs, boyle09_lessons}.
+
+\noindent \textit{\underline{Notes:}} The social structures of the computational science community
+typically reward new conclusions about physical phenomena rather than
+details about the software used
+to make those conclusions. This raises concerns since, as mentioned in the introduction, the software is just as important a tool for modern science as, say, the test tube. However, if scientific developers perceive little value in that software, then the software will be built and maintained in a sub-optimal manner~\cite{sanders08_risk}. 
+
+\noindent \textit{\underline{Modeling Assumptions:}} 
+The perception about the value of scientific software shall be measured with respect to the general public developers' standards on Github. SE researchers and industrial practitioners have thoroughly utilized these metrics to understand a project's value~\cite{grow_16, oss_success_linux, Borges_github, borges_github_star, Munaiah_curating, qualitygithub_14}. 
+%One measure of software perceived value is its associated popularity to the general public, such as Github. 
+Value generally falls under three categories: (1) growth by the number of commits or developers; (2) popularity by the numbers of stars or watchers; and
+(3) active by the ratio of open to closed issues, number of tags or forks. By considering the arrival rate of these measures with respect to the duration variable, and comparing those numbers between CSc and SE, we can comment on how valuable CSc projects are in comparison to SE projects.
+
+\noindent \textit{\underline{Prediction:}} 
+According to this belief, we should expect CSc projects are not as large, active, or popular as SE projects.
+
+\noindent \textit{\underline{Observed:}} 
+\Cref{fig:comparison} showed the
+level of activity for CSc projects which rivals that of SE projects.
+With the exception of duration, most of the indicators are similar or larger for CSc than SE. Recall that even when the median CSc results were lower, statistical tests showed that those differences were not significantly distinguishable. 
+% Note that several of these indicators could be seen to measure the popularity of a project. 
+An example of interpretation from~\Cref{fig:comparison} would be that there are more closed issues than open issues, it indicates the community cares enough about these projects to contribute.
+
+\begin{RQ}
+\textit{\underline{Conclusion:}} 
+We \textbf{doubt} that scientific software is perceived by its community as having less value, as compared to standard SE software.
+\end{RQ}
+
+\noindent \textit{\underline{Discussion:}}
+%Scientific software is developed by mostly Ph.D. students and postdocs that have high personnel turnover rates~\cite{johan18_secs}. Moreover, due to grant-based funding schemes and research natures, the long-term vision is discouraged with ``quick and dirty'' solutions are more likely to be favored~\cite{boyle09_lessons} which leads to short-lived software. 
+% The result for the value aspect may surprise some folks. However, a trend in software-based research for both scientific developers or professional end-user is following the development of the projects and ultimately use such a project to curate necessary data, baseline results, and integrated framework that are relevant to their studies. Hence, the signal is clear by observing the similar distribution of \textit{Stars}, \textit{Forks}, and \textit{Watchers} (i.e., for following) and the greater distribution of \textit{Open \& Closed Issues} (i.e., for using) from CSc's metrics to SE's metrics. 
+% \noindent \textit{\underline{Threats of Validity:}} 
+Two threats to the external validity of this analysis is that the belief is more about cultural value,
+%Yet, without the usage of these Github projects, attribution, reproducibility, and progress within the field would be hampered.  
+and our sampled CSc projects came from Github (for standardization purpose). There exists older existing systems and commercial projects that are not housed on Github (C: GMP~\cite{gmp}, Fortran: BLAS~\cite{blas}, multi-language: NAG~\cite{nag}). It is unclear whether those projects are more or less valuable than standard SE software. However, by having 
+the projects available to the public (i.e., Github), researchers and developers are encouraged to contribute, collaborate and cite~\cite{Borges_github, borges_github_star} which boost attribution,  reproducibility, and progress within the field. This indicator offers a refreshing view in challenging the deep-rooted cultural value of CSc. Assessing projects not hosted on Github should be explored for future work. \\
+
+
+%V
+%comparison
+
+% \noindent \textit{\underline{Threats of Validity:}} 
+
+
+\subsubsection{Limited Formal SE Training}\label{tion:training} 
+
+\noindent \textit{\underline{Belief:}} According to~\citet{segal_enduser},
+and others~\cite{basili08_hpc, carver13_perception, sanders08_risk}, few CSc scientists are trained in SE.\hspace{-2pt} This is concerning as a lack of training might lead to sub-optimal software
+development.
+
+\noindent \textit{\underline{Notes:}} 
+The developers who write CSc code usually
+receive their degrees in fields like
+astronomy, astrophysics, chemistry, economics, genomics, molecular biology, oceanography, physics, political science, and many engineering fields.
+That is, the primary field of study for these developers is {\em not}
+software engineering. For many of these people,
+learning SE is perceived as an excessive additional burden~\cite{boyle09_lessons}.
+
+\noindent \textit{\underline{Modeling Assumptions:}} 
+We say being experienced with software development practices will likely to replace formal training in SE. We designed the following heuristics to measure development experience:
+\bi
+\item The {\em efficiency} of the software process that allow  people to work together productively~\cite{Portela_17}. 
+\item The {\em maturity/sanity} level of CSc's software, e.g., the number of projects that pass the sanity checks of~\Cref{tbl:sanity}~\cite{Kalliamvakou:2014}.
+\item The {\em adoption} of SE practices~(i.e,\hspace{-2pt} agile development \cite{levy2009knowledge},\hspace{-2pt} comprehensible code \cite{von1995program},  high code re-usability\cite{code_reuse}).
+%can be inferred by comparing the distributions of different software development efforts between SE \& CSc.
+\ei
+
+\noindent \textit{\underline{Prediction:}} If this belief is valid, then we should expect more CSc projects that are sane. Consequently, they would be less efficient. Also, fewer CSc projects should pass the sanity checks of ~\Cref{tbl:sanity} compared to SE projects. Further, we would not be able to detect current SE practices within the CSc projects from Github data.
+
+\noindent \textit{\underline{Observed:}}
+Recalling the discussion in~\Cref{fig:comparison}, the case was made on \S\ref{tion:data} that the CSc development community seems more {\em efficient} (as defined above) than SE.
+
+As for the sanity/maturity checks, two samples were used. In the CSc community, we applied the sanity checks
+of~\Cref{tbl:sanity} to the 678 CSc projects from~\S\ref{tion:data} to select 59 projects. For SE, we randomly sampled 50,000 SE Github projects and applied the same sanity checks to get 1,037 projects. 
+This means that CSc projects are over four times more likely to be {\em sane}:
+\vspace{2pt}
+
+\centerline{\scalebox{1.1}{$\frac{\mathit{CSc\_post\_pre\_sanity\_rate}}{\mathit{SE\_post\_pre\_sanity\_rate}} = \frac{\frac{\mathit{CSc\_post\_sanity}}{\mathit{CSc\_pre\_sanity}}}{\frac{\mathit{SE\_post\_sanity}}{\mathit{SE\_pre\_sanity}}} = $} \scalebox{1.5}{$\frac{\frac{59}{678}}{\frac{1,037}{50,000}} = $} 4.2 }
+
+\vspace{2pt}
+
+\begin{figure}
+\vspace{-3pt}
+  \centering
+  \includegraphics[width=0.8\linewidth, height=1.2in]{img/sanity_check.png} 
+  \vspace{-7pt}
+  \caption{SE and CSc projects count before \& after sanity checks.}
+  \label{fig:sanity}
+  \vspace{-15pt}
+\end{figure}
+ 
+Let's revisit the \S\ref{tion:separation}, \S\ref{tion:codeunderstanding}, \& \S\ref{tion:reuse} sections: 
+
+\bi
+\item \Cref{fig:belief1} demonstrated that CSc developers are observed to have a near-constant growth rate in their number of enhancements across their entire lifecycle.  
+\item From~\Cref{fig:heroes}, non-hero developers introduce defects nearly as much as hero developers in CSc projects whereas in SE, they are highly likely (30\%-90\%) to introduce defects.
+
+\item With the four reuse metrics results shown in~\Cref{tbl:reuse}, the difference between the code reuse done by SE developers and scientific developers is not statistically significant.
+
+\ei
+
+These observations are consistent with CSc developers using contemporary, continuous agile methods, and making their code comprehensible to the general public. Code reuse in CSc projects is at least as good as code reuse in SE ones. From these observations, the emerging picture is that CSc developers are very good at {\em adopting} contemporary SE approaches to CSc development. More specifically, CSc developers use software engineering best practices at least as much as---and perhaps even more---than SE developers. 
+
+\begin{RQ}
+\textit{\underline{Conclusion:}} 
+We \textbf{doubt} that CSc scientists' lack of formal training is SE inhibiting CSc development as they are experienced in SE practices.
+\end{RQ}
+
+% \noindent \textit{\underline{Discussion:}} The view of training in SE for us is not solely about data structures and algorithm understandings (i.e., may not be even applicable when entering SE career in Sillicon Valley). It is about the real-world experience and intuitions that scientists can also pick up from working with colleagues (e.g., 1.a belief: requirements are not known upfront, agile philosophy). Similar to \S4.1's \textit{Discussion}, CSc developers are well aware that SE skills are appealing to high-profile companies in the industry.  
+
+% Moreover, we also offer additional evidence to doubt this belief in \S5.2 and \S5.3. CSc novices and outsiders understand the source code than SE ones to contribute significantly less defects. CSc projects reuse as much code as SE projects.   
+
+%\subsection{External Validity}
+
+%Methodology to understand the difference between software development domains in SE. Not our final conclusions or definitions, all are threatened by external validities but our conclusions are reproducible and our analysis can be repeated when new data arrives. 
+
+
+\section{Threats to Validity}
+
+\subsection{Construct Validity}
+
+The above results analysis depends on numerous {\em indicators} to bridge between the belief being explored and the available data. 
+The {\em modeling assumptions} for all the beliefs are documented carefully that were used to design those indicators.
+
+\subsection{External Validity}
+
+Like any data mining paper,
+the results of the analysis are skewed by sampling bias.
+To combat that effect, 
+as a starting point, we did not analyze all 678 available CSc projects. 
+Using the advice from Kalliamvakou et al.~\cite{Kalliamvakou:2014, tu2019better}, we applied certain sanity checks of~\Cref{tbl:sanity}  to focus mainly on 59  projects.
+
+At 59 projects, this sample is much larger than seen in
+most prior studies on computational
+science. That said, it is certainly true that another sample of different projects would make different conclusions.
+Accordingly, we make all our scripts and data publicly available so that
+(a)~our current conclusions
+are repeatable, refutable, improvable and can be quickly repeated across multiple projects by anyone with access to Github; and (b)~our current conclusions can be checked against other data, whenever that becomes available.
+
+
+\section{Discussion}
+This section reflects on what the thirteen beliefs study means for applying SE methods to scientific software development.
+
+Firstly, there is much of SE that can contribute to the CSc community. We saw many times in this study that CSc developers are interested and aware of SE methods (e.g., agile philosophy and modern techniques). CSc is a rich domain within which SE tools and methods can be useful.
+
+That said,  we offer one word of caution about moving SE's tools and methods to CSc. The discussion in \S\ref{terms} warned that basic terminology can be different in SE to CSc. It is, therefore, wise to check domain terminology. The incremental data mining tool described in \S\ref{terms} is one way to reduce the time and cost
+involved in performing such checks. More generally, this calls for attention to not apply off-the-shelf method when moving to a different community, it is more useful to tailor SE methods for the CSc community.
+
+Secondly, contrary to much prior pessimism, the overall message of this paper is that CSc software development is at least as successful as standard development practices seen in SE projects (e.g., comprehensible code in \S\ref{tion:codeunderstanding}, valuable software in \S\ref{tion:value}, and comprehensive SE background in \S\ref{tion:training}). This means that while CSc can take useful tools and insights for SE, there is also room for insights and tools to flow backward from CSc to help SE.
+In particular, the relatively lower defect introduction rates seen in \Cref{fig:heroes} are worthy of further study. Perhaps there is something SE can learn from CSc about how to design systems that are less buggy.
+
+%Thirdly, recalling the discussion about lack of requirements in \S\ref{rments}, it would appear that better methods for requirements engineering may not the most cost-effective thing that SE can offer CS. To be sure, in some CS domains such as hydrology (where CS developers work closely with civil engineers), there is space for better requirements engineering. But overall, \S\ref{rments} is saying that if there is only {\em one} thing you try to improve, changes to requirements engineering many not yield the most benefits for CS.
+
+As to other parts of the development lifecycle,  recalling the discussion about verification and validation in \S\ref{vv}, CSc would most benefit from a different kind of testing device. Standard SE is to divide testing into the unit and system testing. \S\ref{vv} says there is a third layer of testing that we might call science testing. CSc debug tools need to be augmented with, e.g.,,  physical knowledge that can detect violations of physical properties.
+
+Apart from requirements and testing, another major part of the software lifecycle is development and operations. These are two areas that seem to offer the most benefit for new research. For example, many CSc projects are ``glue'' codes that allow other people to run their experimental application code on some complex platform (with one of the benefits being accessible to other tools within the research community). When that code crashes, it is a triage problem to decide which team needs to fix the code (the ``glue'' developers or the application developers). This is one example of the kind of operational support that would be beneficial to explore. Clearly, there are many more possibilities in this exciting area. In fact, the four beliefs that we have not explored, mentioned in \S\ref{tion:cannot}, will be our future work in action right away. 
+
+
+
+
+\section{Conclusion}
+
+%he premise of the prior research~\cite{johan18_secs} is underlying shortcomings of existing approaches for bridging the gap between Software Engineering and Computational Science can be identified by the 13 recurring characteristics or beliefs.
+Through a quantitative investigation on 59 projects, we realized that we do not know enough about the computational science community. There are several disconnects between current data
+and some-held beliefs about the scientific software development.
+Why are so many of those older beliefs not supportable?
+We argue that  the  nature of CSc software development is changing. 
+For example, contrary to much prior pessimism, we found much evidence
+that CSc developers are very
+aware of SE methods and making
+extensive use of them.
+
+ 
+ The current work here lays out highlighted perspectives, quantitative evidence to clarify existing beliefs about scientific software development.
+ We hope these results  prompt a fresh examination of the nature of SE in  CSc which, in turn, may suggest new specialized supporting tools for CSc.
+For example, requirements and unit and system testing  are considered hot topics in the SE community.
+However, for CSc projects,   studying  (a)~scientific testing, (b)~development, and
+(c)~operations might be comparatively more useful.
+
+
+
+% Therefore, more
+% research on this topic is needed, especially to empirically evaluate the 
+% gains in productivity and credibility achieved for scientific software by such
+% SE approaches. 
+
+
+\section{Acknowledgments}
+
+We thank the CSc community, especially the Molecular Sciences Software Institute and the Science Gateways Community Institute for
+their assistance with this work. This work was partially funded by blinded for review.
+%with this work.
+
+
+
+%an NSF CISE Grant \#1826574 and \#1931425.
+
+
+\balance
+% \bibliographystyle{IEEEtran}
+\bibliographystyle{IEEEtranN}
+\bibliography{sample.bib}
+
+\end{document}
